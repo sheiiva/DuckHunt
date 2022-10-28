@@ -12,6 +12,10 @@
 
     #include <unistd.h>
 
+    #define STDIN   0
+    #define STDOUT  1
+    #define STDERR  2
+
     ssize_t my_putchar(char c, int fd);
 
 #endif /* !MY_H_ */
