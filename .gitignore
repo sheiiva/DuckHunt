@@ -1,3 +1,11 @@
+##
+## 		. G I T I G N O R E
+##
+## Corentin COUTRET-ROZET
+## https://github.com/sheiiva/DuckHunt
+##
+##
+
 # Prerequisites
 *.d
 
@@ -50,3 +58,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Divers
+.vscode
