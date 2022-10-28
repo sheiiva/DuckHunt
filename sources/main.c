@@ -9,6 +9,7 @@
 
 #include "sources.h"
 #include "system.h"
+#include "event.h"
 
 int gameloop(t_system *system)
 {
@@ -18,13 +19,7 @@ int gameloop(t_system *system)
         /* Clear the screen */
         sfRenderWindow_clear(system->window->window, sfBlack);
 
-        /* Process events */
-        while (sfRenderWindow_pollEvent(system->window->window, &(system->event)))
-        {
-            /* Close window : exit */
-            if (system->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape))
-                sfRenderWindow_close(system->window->window);
-        }
+        evenManager(system);
 
         // /* Draw the sprite */
         // sfRenderWindow_drawSprite(system->window->window, sprite, NULL);
@@ -37,7 +32,6 @@ int gameloop(t_system *system)
     }
     return (0);
 }
-
 
 int main()
 {

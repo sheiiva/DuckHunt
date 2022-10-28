@@ -12,4 +12,6 @@
 
     #include <stdlib.h>
 
+    #include "event.h"
+
 #endif /* !SOURCE_H_ */

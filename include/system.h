@@ -15,6 +15,9 @@
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
 
+    #define QUIT    0
+    #define RUN     1
+
     typedef struct s_window {
         sfVideoMode mode;
         sfRenderWindow* window;
@@ -23,6 +26,7 @@
     typedef struct s_system {
         t_window *window;
         sfEvent event;
+        int state;
     } t_system;
 
     t_system *initSystem();
