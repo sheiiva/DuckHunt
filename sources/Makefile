@@ -19,11 +19,10 @@ LIB_PATH			=	$(ROOT_PATH)lib/
 
 override CFLAGS 	+=	-W -Wall -Werror -Wextra -I$(INCLUDE_PATH)
 override LDFLAGS 	+=	-L$(LIB_PATH)
-override LDLIBS 	+=	-lmy
+override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
 
 
 SRC			=	main.c				\
-				hello_world.c		\
 
 OBJ 		= 	$(SRC:.c=.o)
 
