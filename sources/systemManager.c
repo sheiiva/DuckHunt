@@ -23,7 +23,8 @@ t_system *initSystem()
 
     if(!system)
         return (NULL);
-    if (!(system->window = initWindow())) {
+    system->window = initWindow();
+    if (!system->window) {
         destroySystem(system);
         return (NULL);
     }

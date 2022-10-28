@@ -12,12 +12,12 @@
 
 sfRenderWindow *createWindow(sfVideoMode mode)
 {
-    return sfRenderWindow_create(mode, "Duck Hunt", sfResize | sfClose, NULL);;
+    return sfRenderWindow_create(mode, "Duck Hunt", sfResize | sfClose, NULL);
 }
 
 void destroyWindow(t_window *window)
 {
-    free(window->window);
+    sfRenderWindow_destroy(window->window);
     free(window);
 }
 

@@ -10,43 +10,42 @@
 #include "sources.h"
 #include "system.h"
 
-// int gameloop()
-// {
-//     /* Start the game loop */
-//     while (sfRenderWindow_isOpen(window))
-//     {
-//         /* Process events */
-//         while (sfRenderWindow_pollEvent(window, &event))
-//         {
-//             /* Close window : exit */
-//             if (event.type == sfEvtClosed)
-//                 sfRenderWindow_close(window);
-//         }
+int gameloop(t_system *system)
+{
+    /* Start the game loop */
+    while (sfRenderWindow_isOpen(system->window->window))
+    {
+        /* Clear the screen */
+        sfRenderWindow_clear(system->window->window, sfBlack);
 
-//         /* Clear the screen */
-//         sfRenderWindow_clear(window, sfBlack);
+        /* Process events */
+        while (sfRenderWindow_pollEvent(system->window->window, &(system->event)))
+        {
+            /* Close window : exit */
+            if (system->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape))
+                sfRenderWindow_close(system->window->window);
+        }
 
-//         /* Draw the sprite */
-//         sfRenderWindow_drawSprite(window, sprite, NULL);
+        // /* Draw the sprite */
+        // sfRenderWindow_drawSprite(system->window->window, sprite, NULL);
 
-//         /* Draw the text */
-//         sfRenderWindow_drawText(window, text, NULL);
+        // /* Draw the text */
+        // sfRenderWindow_drawText(system->window->window, text, NULL);
 
-//         /* Update the window */
-//         sfRenderWindow_display(window);
-//     }
-// }
+        /* Update the window */
+        sfRenderWindow_display(system->window->window);
+    }
+    return (0);
+}
 
 
 int main()
 {
     t_system *system = initSystem();
 
-    while (sfRenderWindow_isOpen(system->window->window))
-    {
-        continue;
-    }
-
+    if (!system)
+        return (84);
+    gameloop(system);
     destroySystem(system);
 
 
@@ -95,5 +94,5 @@ int main()
     // sfSprite_destroy(sprite);
     // sfRenderWindow_destroy(window);
 
-    return 0;
+    return (0);
 }
