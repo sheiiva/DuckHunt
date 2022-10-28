@@ -10,6 +10,6 @@
 #ifndef SOURCE_H_
     #define SOURCE_H_
 
-    int hello_world(void);
+    #include <stdlib.h>
 
 #endif /* !SOURCE_H_ */

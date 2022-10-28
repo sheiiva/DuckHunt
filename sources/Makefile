@@ -23,6 +23,8 @@ override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-w
 
 
 SRC			=	main.c				\
+				windowManager.c		\
+				systemManager.c		\
 
 OBJ 		= 	$(SRC:.c=.o)
 
