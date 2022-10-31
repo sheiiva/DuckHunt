@@ -44,6 +44,11 @@ void drawImages(sfRenderWindow* window, t_image **image)
     }
 }
 
+void setPos(t_image *image, sfVector2f position)
+{
+    image->position = position;
+}
+
 t_image *createImage(char const *path, sfVector2f position)
 {
     t_image *image = malloc(sizeof(t_image));

@@ -33,5 +33,6 @@ t_window *initWindow()
         destroyWindow(window);
         return (NULL);
     }
+    sfRenderWindow_setMouseCursorVisible(window->window, sfFalse);
     return (window);
 }

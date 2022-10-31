@@ -11,9 +11,16 @@
 #include "system.h"
 #include "event.h"
 
-void process(t_system *system)
+#include <stdio.h>
+
+void process(t_system *system, t_scene **scenes)
 {
-    (void)system;
+    sfVector2f pos = {0, 0};
+
+    pos.x = sfMouse_getPositionRenderWindow(system->window->window).x - (CROSS_WIDTH / 2);
+	pos.y = sfMouse_getPositionRenderWindow(system->window->window).y - (CROSS_WIDTH / 2);
+    setPos(scenes[0]->images[1], pos);
+    sfSprite_setPosition(scenes[0]->images[1]->sprite, pos);
 }
 
 void display(sfRenderWindow* window, t_scene *scene)
@@ -36,7 +43,7 @@ void gameloop(t_system *system, t_scene **scenes)
         /* Manage Event */
         evenManager(system);
         /* Process Event */
-        process(system);
+        process(system, scenes);
         /* Display Screen */
         display(system->window->window, scenes[system->state]);
     }

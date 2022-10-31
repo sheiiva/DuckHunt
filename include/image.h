@@ -21,6 +21,7 @@
 
     void destroyImage(t_image *image);
     void destroyImages(t_image **image);
+    void setPos(t_image *image, sfVector2f position);
     void drawImage(sfRenderWindow* window, t_image *image);
     void drawImages(sfRenderWindow* window, t_image **image);
     t_image *createImage(char const *path, sfVector2f position);

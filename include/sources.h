@@ -12,6 +12,8 @@
 
     #include <stdlib.h>
 
+    #define CROSS_WIDTH 45
+
     #include "event.h"
 
 #endif /* !SOURCE_H_ */
