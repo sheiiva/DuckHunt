@@ -15,7 +15,7 @@ t_image **initGameSceneImages(size_t imageNumber)
 
     if (!images)
         return (NULL);
-    images[0] = createImage("assets/images/gameScene/background.png");
+    images[0] = createImage("assets/images/gameScene/background.png", (sfVector2f){0, 0});
     return (images);
 }
 
