@@ -12,7 +12,7 @@
 
 sfRenderWindow *createWindow(sfVideoMode mode)
 {
-    return sfRenderWindow_create(mode, "Duck Hunt", sfResize | sfClose, NULL);
+    return sfRenderWindow_create(mode, "Duck Hunt", sfResize  | sfClose, NULL);
 }
 
 void destroyWindow(t_window *window)
@@ -28,7 +28,7 @@ t_window *initWindow()
 
     if (!window)
         return (NULL);
-    window->mode = (sfVideoMode){800, 600, 32};
+    window->mode = (sfVideoMode){1280, 800, 32};
     if (!(window->window = createWindow(window->mode))) {
         destroyWindow(window);
         return (NULL);

@@ -15,7 +15,7 @@ t_image **initGameSceneImages(size_t imageNumber)
 
     if (!images)
         return (NULL);
-    images[0] = createImage("assets/images/cute_image.jpg");
+    images[0] = createImage("assets/images/gameScene/background.png");
     return (images);
 }
 
