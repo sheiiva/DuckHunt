@@ -28,6 +28,7 @@ t_system *initSystem()
         destroySystem(system);
         return (NULL);
     }
+    sfRenderWindow_setFramerateLimit(system->window->window, 60);
     system->state = GAMESCENE;
     return (system);
 }

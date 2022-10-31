@@ -65,6 +65,9 @@ t_image *createImage(char const *path)
         destroyImage(image);
         return (NULL);
     }
+    sfSprite_setPosition(sprite, pos);
+	sfSprite_setTexture(sprite, t_mana->menu, sfTrue);
+	sfSprite_setTextureRect(sprite, rect);
     sfSprite_setTexture(image->sprite, image->texture, sfTrue);
     return (image); 
 }
