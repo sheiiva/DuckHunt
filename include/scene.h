@@ -1,0 +1,39 @@
+/*
+** Description:
+** Game Scenes' structure
+**
+** Corentin COUTRET-ROZET
+** https://github.com/sheiiva/DuckHunt
+**
+*/
+
+#ifndef SCENE_H_
+    #define SCENE_H_
+
+    #include <SFML/Audio.h>
+    #include <SFML/Window.h>
+    #include <SFML/Graphics.h>
+    #include <SFML/System.h>
+
+    #include <stdlib.h>
+
+    #include "image.h"
+    #include "sound.h"
+    #include "text.h"
+
+    #define SCENENUMBER 1
+
+    typedef struct s_scene {
+        t_image **images;
+        t_text **texts;
+        t_sound **sounds;
+    } t_scene;
+
+    t_scene **initScenes();
+    t_scene *initGameScene();
+    void drawScene(sfRenderWindow* window, t_scene *scene);
+    void destroyScene(t_scene *scene);
+    void destroyScenes(t_scene **scenes);
+    t_scene *createScene();
+
+#endif /* !SCENE_H_ */

@@ -17,7 +17,8 @@ sfRenderWindow *createWindow(sfVideoMode mode)
 
 void destroyWindow(t_window *window)
 {
-    sfRenderWindow_destroy(window->window);
+    if (window)
+        sfRenderWindow_destroy(window->window);
     free(window);
 }
 

@@ -28,6 +28,6 @@ t_system *initSystem()
         destroySystem(system);
         return (NULL);
     }
-    system->state = RUN;
+    system->state = GAMESCENE;
     return (system);
 }

@@ -23,9 +23,14 @@ override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-w
 
 
 SRC			=	main.c				\
-				eventManager.c		\
-				systemManager.c		\
-				windowManager.c		\
+				manager/eventManager.c		\
+				manager/sceneManager.c		\
+				manager/systemManager.c		\
+				manager/windowManager.c		\
+				manager/objects/imageManager.c		\
+				manager/objects/soundManager.c		\
+				manager/objects/textManager.c		\
+				scenes/gameScene.c		\
 
 OBJ 		= 	$(SRC:.c=.o)
 

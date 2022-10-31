@@ -10,10 +10,6 @@
 #include "system.h"
 #include "event.h"
 
-void (*checkEvent[NUMEVENT])(t_system*) = {
-    onClose
-};
-
 void onClose(t_system *system)
 {
     /* Close window : exit */
@@ -22,6 +18,10 @@ void onClose(t_system *system)
         system->state = QUIT;
     }
 }
+
+void (*checkEvent[NUMEVENT])(t_system*) = {
+    onClose
+};
 
 void evenManager(t_system *system)
 {

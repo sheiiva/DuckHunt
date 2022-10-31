@@ -22,5 +22,6 @@
     void destroySound(t_sound *sound);
     void destroySounds(t_sound **sounds);
     t_sound *createSound(char const *sourcePath);
+    t_sound **createSoundArray(size_t size);
 
 #endif /* !SOUND_H_ */

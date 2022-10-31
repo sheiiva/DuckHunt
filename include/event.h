@@ -1,6 +1,6 @@
 /*
 ** Description:
-** Event event's structure
+** Event's structure
 **
 ** Corentin COUTRET-ROZET
 ** https://github.com/sheiiva/DuckHunt
@@ -11,9 +11,6 @@
     #define EVENT_H_
 
     #include "system.h"
-
-    #define QUIT    0
-    #define RUN     1
 
     #define NUMEVENT    1
 

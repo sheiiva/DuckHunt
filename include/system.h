@@ -15,8 +15,12 @@
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
 
-    #define QUIT    0
-    #define RUN     1
+    #include "scene.h"
+
+    enum _GAMESTATE {
+        QUIT=       -1,
+        GAMESCENE=  0,
+    };
 
     typedef struct s_window {
         sfVideoMode mode;

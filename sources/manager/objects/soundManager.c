@@ -45,3 +45,17 @@ t_sound *createSound(char const *sourcePath)
     }
     return (sound); 
 }
+
+t_sound **createSoundArray(size_t size)
+{
+    t_sound **array = malloc(sizeof(t_sound*) * (size + 1));
+    size_t i = 0;
+
+    if (!array)
+        return (NULL);
+    while (i <= size) {
+        array[i] = NULL;
+        i += 1;
+    }
+    return (array);
+}

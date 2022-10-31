@@ -29,6 +29,21 @@ void destroyImages(t_image **image)
     }
 }
 
+void drawImage(sfRenderWindow* window, t_image *image)
+{
+    sfRenderWindow_drawSprite(window, image->sprite, NULL);
+}
+
+void drawImages(sfRenderWindow* window, t_image **image)
+{
+    int i = 0;
+
+    while (image[i]) {
+        drawImage(window, image[i]);
+        i += 1;
+    }
+}
+
 t_image *createImage(char const *path)
 {
     t_image *image = malloc(sizeof(t_image));
@@ -52,4 +67,18 @@ t_image *createImage(char const *path)
     }
     sfSprite_setTexture(image->sprite, image->texture, sfTrue);
     return (image); 
+}
+
+t_image **createImageArray(size_t size)
+{
+    t_image **array = malloc(sizeof(t_image*) * (size + 1));
+    size_t i = 0;
+
+    if (!array)
+        return (NULL);
+    while (i <= size) {
+        array[i] = NULL;
+        i += 1;
+    }
+    return (array);
 }

@@ -11,82 +11,53 @@
 #include "system.h"
 #include "event.h"
 
-int gameloop(t_system *system)
+void process(t_system *system)
+{
+    (void)system;
+}
+
+void display(sfRenderWindow* window, t_scene *scene)
+{
+    drawScene(window, scene);
+    sfRenderWindow_display(window);
+}
+
+void clear(sfRenderWindow* window)
+{
+    sfRenderWindow_clear(window, sfBlack);
+}
+
+void gameloop(t_system *system, t_scene **scenes)
 {
     /* Start the game loop */
-    while (sfRenderWindow_isOpen(system->window->window))
-    {
+    while (sfRenderWindow_isOpen(system->window->window) && (system->state != QUIT)) {
         /* Clear the screen */
-        sfRenderWindow_clear(system->window->window, sfBlack);
-
+        clear(system->window->window);
+        /* Manage Event */
         evenManager(system);
-
-        // /* Draw the sprite */
-        // sfRenderWindow_drawSprite(system->window->window, sprite, NULL);
-
-        // /* Draw the text */
-        // sfRenderWindow_drawText(system->window->window, text, NULL);
-
-        /* Update the window */
-        sfRenderWindow_display(system->window->window);
+        /* Process Event */
+        process(system);
+        /* Display Screen */
+        display(system->window->window, scenes[system->state]);
     }
-    return (0);
+}
+
+void destroyAll(t_system *system, t_scene **scenes)
+{
+    destroyScenes(scenes);
+    destroySystem(system);
 }
 
 int main()
 {
     t_system *system = initSystem();
+    t_scene **scenes = initScenes();
 
-    if (!system)
+    if (!system || !scenes) {
+        destroyAll(system, scenes);
         return (84);
-    gameloop(system);
-    destroySystem(system);
-
-
-    // sfTexture* texture;
-    // sfSprite* sprite;
-    // sfFont* font;
-    // sfText* text;
-    // sfMusic* music;
-
-    // /* Create the main window */
-    // window = sfRenderWindow_create(mode, "SFML window", sfResize | sfClose, NULL);
-    // if (!window)
-    //     return 84;
-
-    // /* Load a sprite to display */
-    // texture = sfTexture_createFromFile("assets/images/cute_image.jpg", NULL);
-    // if (!texture)
-    //     return 84;
-    // sprite = sfSprite_create();
-    // sfSprite_setTexture(sprite, texture, sfTrue);
-
-    // /* Create a graphical text to display */
-    // font = sfFont_createFromFile("assets/fonts/JosefinSans-Italic-VariableFont_wght.ttf");
-    // if (!font)
-    //     return 84;
-    // text = sfText_create();
-    // sfText_setString(text, "Hello SFML");
-    // sfText_setFont(text, font);
-    // sfText_setCharacterSize(text, 50);
-
-    // /* Load a music to play */
-    // music = sfMusic_createFromFile("assets/sounds/music.wav");
-    // if (!music)
-    //     return 84;
-
-    // /* Play the music */
-    // sfMusic_play(music);
-
-
-
-    // /* Cleanup resources */
-    // sfMusic_destroy(music);
-    // sfText_destroy(text);
-    // sfFont_destroy(font);
-    // sfTexture_destroy(texture);
-    // sfSprite_destroy(sprite);
-    // sfRenderWindow_destroy(window);
-
+    }
+    gameloop(system, scenes);
+    destroyAll(system, scenes);
     return (0);
 }

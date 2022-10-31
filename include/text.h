@@ -21,6 +21,9 @@
 
     void destroyText(t_text *text);
     void destroyTexts(t_text **texts);
+    void drawText(sfRenderWindow* window, t_text *text);
+    void drawTexts(sfRenderWindow* window, t_text **texts);
     t_text *createText(char const *content, unsigned int size, char *fontPath);
+    t_text **createTextArray(size_t size);
 
 #endif /* !TEXT_H_ */

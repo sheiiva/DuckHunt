@@ -20,6 +20,9 @@
 
     void destroyImage(t_image *image);
     void destroyImages(t_image **image);
+    void drawImage(sfRenderWindow* window, t_image *image);
+    void drawImages(sfRenderWindow* window, t_image **image);
     t_image *createImage(char const *path);
+    t_image **createImageArray(size_t size);
 
 #endif /* !IMAGE_H_ */

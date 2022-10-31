@@ -29,6 +29,21 @@ void destroyTexts(t_text **texts)
     }
 }
 
+void drawText(sfRenderWindow* window, t_text *text)
+{
+    sfRenderWindow_drawText(window, text->text, NULL);
+}
+
+void drawTexts(sfRenderWindow* window, t_text **texts)
+{
+    int i = 0;
+
+    while (texts[i]) {
+        drawText(window, texts[i]);
+        i += 1;
+    }
+}
+
 t_text *createText(char const *content, unsigned int size, char *fontPath)
 {
     t_text *text = malloc(sizeof(t_text));
@@ -55,4 +70,18 @@ t_text *createText(char const *content, unsigned int size, char *fontPath)
     sfText_setFont(text->text, text->font);
     sfText_setCharacterSize(text->text, text->size);
     return (text); 
+}
+
+t_text **createTextArray(size_t size)
+{
+    t_text **array = malloc(sizeof(t_text*) * (size + 1));
+    size_t i = 0;
+
+    if (!array)
+        return (NULL);
+    while (i <= size) {
+        array[i] = NULL;
+        i += 1;
+    }
+    return (array);
 }
