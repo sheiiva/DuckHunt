@@ -47,6 +47,7 @@ void drawImages(sfRenderWindow* window, t_image **image)
 void setPos(t_image *image, sfVector2f position)
 {
     image->position = position;
+    sfSprite_setPosition(image->sprite, image->position);
 }
 
 t_image *createImage(char const *path, sfVector2f position)
@@ -70,8 +71,7 @@ t_image *createImage(char const *path, sfVector2f position)
         destroyImage(image);
         return (NULL);
     }
-    image->position = position;
-    sfSprite_setPosition(image->sprite, image->position);
+    setPos(image, position);
     sfSprite_setTexture(image->sprite, image->texture, sfTrue);
     return (image); 
 }

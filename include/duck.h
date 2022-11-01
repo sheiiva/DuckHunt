@@ -17,8 +17,10 @@
 
     #define DUCK_IMSIZE 110
 
-    #define MINSPEED   4
-    #define MAXSPEED   20
+    #define MINSPEED    4
+    #define MAXSPEED    20
+
+    #define POPMARGIN   100
 
     // int direction;
 
@@ -39,5 +41,6 @@
     void destroyDuck(t_duck *duck);
     t_duck *updateDuckPosition(t_duck *duck);
     t_duck **updateDucksPosition(t_duck **ducks);
+    void resetDuck(t_duck *duck, const sfRenderWindow *window);
 
 #endif /* !DUCK_H_ */

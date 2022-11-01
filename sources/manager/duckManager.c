@@ -85,6 +85,13 @@ unsigned int generateDuckSpeed()
     return (MINSPEED + (rand() % MAXSPEED));
 }
 
+void resetDuck(t_duck *duck, const sfRenderWindow *window)
+{
+    sfVector2f newPosition = {-(rand() % POPMARGIN), generateDuckHeightPos(sfRenderWindow_getSize(window).y)};
+
+    setPos(duck->image, newPosition);
+}
+
 t_duck *createDuck(const sfRenderWindow *window)
 {
     unsigned int height = sfRenderWindow_getSize(window).y;

@@ -15,16 +15,17 @@
 
 void onShootDuck(t_system *system, t_scene **scenes)
 {
+    int i = 0;
+
     /* Mouse click event */
     if (sfMouse_isButtonPressed(sfMouseLeft) == sfFalse)
         return;
     /* Check if Game Scene */
     if (system->state != GAMESCENE)
         return;
-    int i = 0;
     while (i < MAX_DUCKS) {
         if (click_on_sprite(scenes[GAMESCENE]->ducks[i]->image->sprite, system->window->window)) {
-            printf("shoot!\n");
+            resetDuck(scenes[GAMESCENE]->ducks[i], system->window->window);
         }
         i += 1;
     }
