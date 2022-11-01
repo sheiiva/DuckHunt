@@ -15,7 +15,7 @@
 
 t_duck *updateDuckSprite(t_duck *duck)
 {
-    (duck->offset < (3 * DUCK_IMSIZE)) ? (duck->offset += 110) : (duck->offset = 0);
+    (duck->offset < (2 * DUCK_IMSIZE)) ? (duck->offset += DUCK_IMSIZE) : (duck->offset = 0);
 
     duck->rect.top = 0;
 	duck->rect.left = duck->offset;
@@ -97,6 +97,7 @@ t_duck *createDuck(const sfRenderWindow *window)
         return (NULL);
     }
     duck->rect = (sfIntRect){0, duck->offset, DUCK_IMSIZE, DUCK_IMSIZE};
+    duck->offset = 0;
     return (duck); 
 }
 
