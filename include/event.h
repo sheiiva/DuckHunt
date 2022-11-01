@@ -12,10 +12,8 @@
 
     #include "system.h"
 
-    #define NUMEVENT    1
+    #define NUMEVENT    2
 
-    void evenManager(t_system *system);
-
-    void onClose(t_system *system);
+    void evenManager(t_system *system, t_scene **scenes);
 
 #endif /* !EVENT_H_ */

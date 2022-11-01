@@ -53,7 +53,7 @@ void gameloop(t_system *system, t_scene **scenes)
         /* Clear the screen */
         clear(system->window->window);
         /* Manage Event */
-        evenManager(system);
+        evenManager(system, scenes);
         /* Process Event */
         process(system, scenes);
         /* Display Screen */
