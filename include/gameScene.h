@@ -14,7 +14,7 @@
     #define TEXTNUMBER      0
     #define SOUNDNUMER      0
 
-    #define MAX_DUCKS       1
+    #define MAX_DUCKS       5
 
     #define BACKGROUND      0
     #define BACKGROUND_PATH "assets/images/gameScene/background.png"

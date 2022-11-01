@@ -27,7 +27,7 @@ t_duck *updateDuckSprite(t_duck *duck)
 
 t_duck *updateDuckPosition(t_duck *duck)
 {
-    duck->image->position.x += MINSPEED + (rand() % MAXSPEED);
+    duck->image->position.x += duck->speed;
     sfSprite_setPosition(duck->image->sprite, duck->image->position);
     return (duck);
 }
@@ -77,11 +77,12 @@ void drawDucks(sfRenderWindow* window, t_duck **ducks)
 
 unsigned int generateDuckHeightPos(unsigned int height)
 {
-    time_t t;
-    srand((unsigned)time(&t));
+    return (rand() % (height - DUCK_IMSIZE));
+}
 
-    height = rand() % height;
-    return (height > DUCK_IMSIZE) ? height + DUCK_IMSIZE : height;
+unsigned int generateDuckSpeed()
+{
+    return (MINSPEED + (rand() % MAXSPEED));
 }
 
 t_duck *createDuck(const sfRenderWindow *window)
@@ -91,13 +92,14 @@ t_duck *createDuck(const sfRenderWindow *window)
 
     if (!duck)
         return (NULL);
+    duck->offset = 0;
+    duck->speed = generateDuckSpeed();
     duck->image = createImage(DUCK_PATH, (sfVector2f){0, generateDuckHeightPos(height)});
     if (!duck->image) {
         destroyDuck(duck);
         return (NULL);
     }
     duck->rect = (sfIntRect){0, duck->offset, DUCK_IMSIZE, DUCK_IMSIZE};
-    duck->offset = 0;
     return (duck); 
 }
 

@@ -26,6 +26,7 @@
 
     typedef struct s_duck {
         int offset;
+        int speed;
         sfIntRect rect;
         t_image *image;
     } t_duck;
