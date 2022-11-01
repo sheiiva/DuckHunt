@@ -51,14 +51,14 @@ void drawScene(sfRenderWindow* window, t_scene *scene)
     drawDucks(window, scene->ducks);
 }
 
-t_scene **initScenes()
+t_scene **initScenes(const sfRenderWindow *window)
 {
     t_scene **scenes = malloc(sizeof(t_scene*) * (SCENENUMBER + 1));
 
     if (!scenes)
         return (NULL);
     scenes[SCENENUMBER] = NULL;
-    if (!(scenes[0] = initGameScene())) {
+    if (!(scenes[0] = initGameScene(window))) {
         destroyScenes(scenes);
         return (NULL);
     }

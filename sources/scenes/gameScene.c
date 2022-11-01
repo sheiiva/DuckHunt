@@ -10,7 +10,7 @@
 #include "gameScene.h"
 #include "scene.h"
 
-t_duck **initGameSceneDucks(size_t duckNumber)
+t_duck **initGameSceneDucks(size_t duckNumber, const sfRenderWindow *window)
 {
     int i = 0;
     t_duck **ducks = createDuckArray(duckNumber);
@@ -18,7 +18,7 @@ t_duck **initGameSceneDucks(size_t duckNumber)
     if (!ducks)
         return (NULL);
     while (i < MAX_DUCKS) {
-        if (!(ducks[i] = createDuck())) {
+        if (!(ducks[i] = createDuck(window))) {
             destroyDucks(ducks);
             return (NULL);
         }
@@ -56,12 +56,12 @@ t_sound **initGameSceneSounds(size_t soundNumber)
     return (sounds);
 }
 
-t_scene *initGameScene()
+t_scene *initGameScene(const sfRenderWindow *window)
 {
     t_scene *scene = createScene();
 
     if (!scene
-        || !(scene->ducks = initGameSceneDucks(MAX_DUCKS))
+        || !(scene->ducks = initGameSceneDucks(MAX_DUCKS, window))
         || !(scene->images = initGameSceneImages(IMAGENUMBER))
         || !(scene->texts = initGameSceneTexts(TEXTNUMBER))
         || !(scene->sounds =  initGameSceneSounds(SOUNDNUMER))) {

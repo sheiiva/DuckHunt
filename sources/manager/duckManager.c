@@ -11,6 +11,7 @@
 #include "image.h"
 
 #include <stdlib.h>
+#include <time.h>
 
 t_duck *updateDuckSprite(t_duck *duck)
 {
@@ -74,13 +75,23 @@ void drawDucks(sfRenderWindow* window, t_duck **ducks)
     }
 }
 
-t_duck *createDuck()
+unsigned int generateDuckHeightPos(unsigned int height)
 {
+    time_t t;
+    srand((unsigned)time(&t));
+
+    height = rand() % height;
+    return (height > DUCK_IMSIZE) ? height + DUCK_IMSIZE : height;
+}
+
+t_duck *createDuck(const sfRenderWindow *window)
+{
+    unsigned int height = sfRenderWindow_getSize(window).y;
     t_duck *duck = malloc(sizeof(t_duck));
 
     if (!duck)
         return (NULL);
-    duck->image = createImage(DUCK_PATH, (sfVector2f){0, 0});
+    duck->image = createImage(DUCK_PATH, (sfVector2f){0, generateDuckHeightPos(height)});
     if (!duck->image) {
         destroyDuck(duck);
         return (NULL);

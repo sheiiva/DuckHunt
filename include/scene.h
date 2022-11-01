@@ -31,8 +31,8 @@
         t_sound **sounds;
     } t_scene;
 
-    t_scene **initScenes();
-    t_scene *initGameScene();
+    t_scene **initScenes(const sfRenderWindow *window);
+    t_scene *initGameScene(const sfRenderWindow *window);
     void drawScene(sfRenderWindow* window, t_scene *scene);
     void destroyScene(t_scene *scene);
     void destroyScenes(t_scene **scenes);

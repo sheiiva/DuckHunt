@@ -70,9 +70,13 @@ void destroyAll(t_system *system, t_scene **scenes)
 int main()
 {
     t_system *system = initSystem();
-    t_scene **scenes = initScenes();
+    t_scene **scenes = NULL;
 
-    if (!system || !scenes) {
+    if (!system) {
+        destroyAll(system, scenes);
+        return (84);
+    }
+    if (!(scenes = initScenes(system->window->window))) {
         destroyAll(system, scenes);
         return (84);
     }
