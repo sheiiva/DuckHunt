@@ -10,17 +10,29 @@
 #include "sources.h"
 #include "system.h"
 #include "event.h"
+#include "gameScene.h"
 
-#include <stdio.h>
-
-void process(t_system *system, t_scene **scenes)
+void updateCrossAirPosition(t_system *system, t_scene **scenes)
 {
     sfVector2f pos = {0, 0};
 
     pos.x = sfMouse_getPositionRenderWindow(system->window->window).x - (CROSS_WIDTH / 2);
-	pos.y = sfMouse_getPositionRenderWindow(system->window->window).y - (CROSS_WIDTH / 2);
-    setPos(scenes[0]->images[1], pos);
-    sfSprite_setPosition(scenes[0]->images[1]->sprite, pos);
+    pos.y = sfMouse_getPositionRenderWindow(system->window->window).y - (CROSS_WIDTH / 2);
+    setPos(scenes[GAMESCENE]->images[CROSSAIR], pos);
+    sfSprite_setPosition(scenes[GAMESCENE]->images[CROSSAIR]->sprite, pos);
+}
+
+void process(t_system *system, t_scene **scenes)
+{
+    sfTime time = sfClock_getElapsedTime(system->clock);
+
+	if ((time.microseconds / 1000000.0) > 0.1) {
+        if (system->state == GAMESCENE) {
+            updateCrossAirPosition(system, scenes);
+            updateDucksPosition(scenes[GAMESCENE]->ducks);
+        }
+		sfClock_restart(system->clock);
+	}
 }
 
 void display(sfRenderWindow* window, t_scene *scene)

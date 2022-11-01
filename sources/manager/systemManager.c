@@ -12,8 +12,11 @@
 
 void destroySystem(t_system *system)
 {
+    if (!system)
+        return;
     if (system->window)
         destroyWindow(system->window);
+    sfClock_destroy(system->clock);
     free(system);
 }
 
@@ -29,6 +32,7 @@ t_system *initSystem()
         return (NULL);
     }
     sfRenderWindow_setFramerateLimit(system->window->window, 60);
+    system->clock = sfClock_create();
     system->state = GAMESCENE;
     return (system);
 }

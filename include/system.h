@@ -17,6 +17,8 @@
 
     #include "scene.h"
 
+    #define TIMEREFRESH 0.1
+
     enum _GAMESTATE {
         QUIT=       -1,
         GAMESCENE=  0,
@@ -29,6 +31,7 @@
 
     typedef struct s_system {
         t_window *window;
+        sfClock *clock;
         sfEvent event;
         int state;
     } t_system;

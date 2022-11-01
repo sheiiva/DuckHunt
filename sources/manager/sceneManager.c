@@ -13,6 +13,7 @@ void destroyScene(t_scene *scene)
 {
     if (!scene)
         return;
+    destroyDucks(scene->ducks);
     destroyImages(scene->images);
     destroyTexts(scene->texts);
     destroySounds(scene->sounds);
@@ -36,6 +37,7 @@ t_scene *createScene()
 
     if (!newScene)
         return (NULL);
+    newScene->ducks = NULL;
     newScene->images = NULL;
     newScene->texts = NULL;
     newScene->sounds = NULL;
@@ -46,6 +48,7 @@ void drawScene(sfRenderWindow* window, t_scene *scene)
 {
     drawImages(window, scene->images);
     drawTexts(window, scene->texts);
+    drawDucks(window, scene->ducks);
 }
 
 t_scene **initScenes()

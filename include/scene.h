@@ -20,10 +20,12 @@
     #include "image.h"
     #include "sound.h"
     #include "text.h"
+    #include "duck.h"
 
     #define SCENENUMBER 1
 
     typedef struct s_scene {
+        t_duck **ducks;
         t_image **images;
         t_text **texts;
         t_sound **sounds;

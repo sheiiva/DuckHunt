@@ -7,7 +7,25 @@
 **
 */
 
+#include "gameScene.h"
 #include "scene.h"
+
+t_duck **initGameSceneDucks(size_t duckNumber)
+{
+    int i = 0;
+    t_duck **ducks = createDuckArray(duckNumber);
+
+    if (!ducks)
+        return (NULL);
+    while (i < MAX_DUCKS) {
+        if (!(ducks[i] = createDuck())) {
+            destroyDucks(ducks);
+            return (NULL);
+        }
+        i += 1;
+    }
+    return (ducks);
+}
 
 t_image **initGameSceneImages(size_t imageNumber)
 {
@@ -15,8 +33,8 @@ t_image **initGameSceneImages(size_t imageNumber)
 
     if (!images)
         return (NULL);
-    images[0] = createImage("assets/images/gameScene/background.png", (sfVector2f){0, 0});
-    images[1] = createImage("assets/images/gameScene/crossair.png", (sfVector2f){0, 0});
+    images[BACKGROUND] = createImage(BACKGROUND_PATH, (sfVector2f){0, 0});
+    images[CROSSAIR] = createImage(CROSSAIR_PATH, (sfVector2f){0, 0});
     return (images);
 }
 
@@ -40,15 +58,13 @@ t_sound **initGameSceneSounds(size_t soundNumber)
 
 t_scene *initGameScene()
 {
-    size_t imageNumber = 2;
-    size_t textNumber = 0;
-    size_t soundNumber = 0;
     t_scene *scene = createScene();
 
     if (!scene
-        || !(scene->images = initGameSceneImages(imageNumber))
-        || !(scene->texts = initGameSceneTexts(textNumber))
-        || !(scene->sounds =  initGameSceneSounds(soundNumber))) {
+        || !(scene->ducks = initGameSceneDucks(MAX_DUCKS))
+        || !(scene->images = initGameSceneImages(IMAGENUMBER))
+        || !(scene->texts = initGameSceneTexts(TEXTNUMBER))
+        || !(scene->sounds =  initGameSceneSounds(SOUNDNUMER))) {
         destroyScene(scene);
         return (NULL);
     }
