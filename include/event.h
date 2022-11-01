@@ -16,4 +16,7 @@
 
     void evenManager(t_system *system, t_scene **scenes);
 
+    sfBool click_on_sprite(sfSprite *sprite, sfRenderWindow *window);
+    sfBool mouse_on_sprite(sfSprite *sprite, sfRenderWindow *window);
+
 #endif /* !EVENT_H_ */

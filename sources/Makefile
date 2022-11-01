@@ -24,10 +24,11 @@ override LDLIBS 	+=	-lmy -lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-w
 
 SRC			=	main.c				\
 				manager/duckManager.c		\
-				manager/eventManager.c		\
 				manager/sceneManager.c		\
 				manager/systemManager.c		\
 				manager/windowManager.c		\
+				manager/events/eventManager.c		\
+				manager/events/onClick.c			\
 				manager/objects/imageManager.c		\
 				manager/objects/soundManager.c		\
 				manager/objects/textManager.c		\
