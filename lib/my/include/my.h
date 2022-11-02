@@ -12,6 +12,7 @@
 
     #include <unistd.h>
     #include <stdlib.h>
+    #include <string.h>
 
     #define STDIN   0
     #define STDOUT  1

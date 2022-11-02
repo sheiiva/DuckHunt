@@ -44,6 +44,8 @@ t_text **initGameSceneTexts(size_t textNumber)
 
     if (!texts)
         return (NULL);
+    texts[SCORE_LABEL] = createText("Score:", (sfVector2f){10, 10}, 50, sfWhite, FONT_PATH);
+    texts[SCORE] = createText("0", (sfVector2f){200, 10}, 50, sfWhite, FONT_PATH);
     return (texts);
 }
 

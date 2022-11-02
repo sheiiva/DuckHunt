@@ -12,11 +12,11 @@
 
 void destroySystem(t_system *system)
 {
+    sfClock_destroy(system->clock);
     if (!system)
         return;
     if (system->window)
         destroyWindow(system->window);
-    sfClock_destroy(system->clock);
     free(system);
 }
 

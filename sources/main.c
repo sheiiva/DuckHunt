@@ -49,11 +49,14 @@ void clear(sfRenderWindow* window)
 void gameloop(t_system *system, t_scene **scenes)
 {
     /* Start the game loop */
-    while (sfRenderWindow_isOpen(system->window->window) && (system->state != QUIT)) {
-        /* Clear the screen */
-        clear(system->window->window);
+    while (sfRenderWindow_isOpen(system->window->window)) {
         /* Manage Event */
         evenManager(system, scenes);
+        if (system->state == QUIT) {
+            return;
+        }
+        /* Clear the screen */
+        clear(system->window->window);
         /* Process Event */
         process(system, scenes);
         /* Display Screen */

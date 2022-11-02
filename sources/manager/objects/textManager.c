@@ -44,7 +44,8 @@ void drawTexts(sfRenderWindow* window, t_text **texts)
     }
 }
 
-t_text *createText(char const *content, unsigned int size, char *fontPath)
+t_text *createText(char const *content, sfVector2f position, unsigned int size,
+                    sfColor color, char *fontPath)
 {
     t_text *text = malloc(sizeof(t_text));
 
@@ -66,7 +67,10 @@ t_text *createText(char const *content, unsigned int size, char *fontPath)
         return (NULL);
     }
     text->size = size;
+    text->position = position;
     sfText_setString(text->text, text->content);
+    sfText_setPosition(text->text, position);
+	sfText_setColor(text->text, color);
     sfText_setFont(text->text, text->font);
     sfText_setCharacterSize(text->text, text->size);
     return (text); 
