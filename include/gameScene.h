@@ -10,6 +10,7 @@
 #ifndef GAMESCENE_H_
     #define GAMESCENE_H_
 
+    #include <stdio.h>
     #include "duck.h"
     #include "scene.h"
 
