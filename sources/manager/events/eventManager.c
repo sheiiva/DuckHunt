@@ -10,6 +10,7 @@
 #include "sources.h"
 #include "system.h"
 #include "gameScene.h"
+#include "menuScene.h"
 
 void onShootDuck(t_system *system, t_scene **scenes)
 {
@@ -30,6 +31,18 @@ void onShootDuck(t_system *system, t_scene **scenes)
     }
 }
 
+void onPlay(t_system *system, t_scene **scenes)
+{
+    if (system->state != MENUSCENE)
+        return;
+    if (mouse_on_text(scenes[MENUSCENE]->texts[MENU_PLAY]->text, system->window->window))
+        sfText_setColor(scenes[MENUSCENE]->texts[MENU_PLAY]->text, sfRed);
+    else
+        sfText_setColor(scenes[MENUSCENE]->texts[MENU_PLAY]->text, sfWhite);
+    if (click_on_text(scenes[MENUSCENE]->texts[MENU_PLAY]->text, system->window->window))
+        system->state = GAMESCENE;
+}
+
 void onClose(t_system *system, __UNUSED__ t_scene **scenes)
 {
     /* Close window : exit */
@@ -41,7 +54,8 @@ void onClose(t_system *system, __UNUSED__ t_scene **scenes)
 
 void (*checkEvent[NUMEVENT])(t_system*, t_scene**) = {
     onClose,
-    onShootDuck
+    onShootDuck,
+    onPlay
 };
 
 void evenManager(t_system *system, t_scene **scenes)
