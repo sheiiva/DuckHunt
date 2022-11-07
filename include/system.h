@@ -21,7 +21,8 @@
 
     enum _GAMESTATE {
         QUIT=       -1,
-        GAMESCENE=  0,
+        MENUSCENE=  0,
+        GAMESCENE=  1,
     };
 
     typedef struct s_window {

@@ -35,6 +35,7 @@ SRC			=	main.c				\
 				manager/objects/soundManager.c		\
 				manager/objects/textManager.c		\
 				scenes/gameScene.c		\
+				scenes/menuScene.c		\
 
 OBJ 		= 	$(SRC:.c=.o)
 

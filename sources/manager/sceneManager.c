@@ -8,6 +8,8 @@
 */
 
 #include "scene.h"
+#include "menuScene.h"
+#include "gameScene.h"
 
 void destroyScene(t_scene *scene)
 {
@@ -48,7 +50,8 @@ void drawScene(sfRenderWindow* window, t_scene *scene)
 {
     drawImages(window, scene->images);
     drawTexts(window, scene->texts);
-    drawDucks(window, scene->ducks);
+    if (scene->ducks)
+        drawDucks(window, scene->ducks);
 }
 
 t_scene **initScenes(const sfRenderWindow *window)
@@ -58,7 +61,8 @@ t_scene **initScenes(const sfRenderWindow *window)
     if (!scenes)
         return (NULL);
     scenes[SCENENUMBER] = NULL;
-    if (!(scenes[0] = initGameScene(window))) {
+    if (!(scenes[0] = initMenuScene(window))
+        || !(scenes[1] = initGameScene(window))) {
         destroyScenes(scenes);
         return (NULL);
     }

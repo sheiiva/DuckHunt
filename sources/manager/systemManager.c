@@ -39,6 +39,6 @@ t_system *initSystem()
     }
     sfRenderWindow_setFramerateLimit(system->window->window, 60);
     system->clock = sfClock_create();
-    system->state = GAMESCENE;
+    system->state = MENUSCENE;
     return (system);
 }

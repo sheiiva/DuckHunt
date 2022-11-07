@@ -7,21 +7,21 @@
 **
 */
 
+#include "sources.h"
 #include "system.h"
 #include "gameScene.h"
-#include "event.h"
 
 void onShootDuck(t_system *system, t_scene **scenes)
 {
     int i = 0;
 
-    /* Mouse click event */
-    if (sfMouse_isButtonPressed(sfMouseLeft) == sfFalse)
-        return;
     /* Check if Game Scene */
     if (system->state != GAMESCENE)
         return;
-    while (i < MAX_DUCKS) {
+    /* Mouse click event */
+    if (sfMouse_isButtonPressed(sfMouseLeft) == sfFalse)
+        return;
+    while (i < GAME_MAX_DUCKS) {
         if (click_on_sprite(scenes[GAMESCENE]->ducks[i]->image->sprite, system->window->window)) {
             updateScore(scenes[GAMESCENE], 1);
             resetDuck(scenes[GAMESCENE]->ducks[i], system->window->window);
@@ -30,9 +30,8 @@ void onShootDuck(t_system *system, t_scene **scenes)
     }
 }
 
-void onClose(t_system *system, t_scene **scenes)
+void onClose(t_system *system, __UNUSED__ t_scene **scenes)
 {
-    (void)scenes;
     /* Close window : exit */
     if (system->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape)) {
         sfRenderWindow_close(system->window->window);

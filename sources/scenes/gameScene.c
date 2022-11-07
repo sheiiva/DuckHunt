@@ -19,7 +19,7 @@ t_duck **initGameSceneDucks(size_t duckNumber, const sfRenderWindow *window)
 
     if (!ducks)
         return (NULL);
-    while (i < MAX_DUCKS) {
+    while (i < GAME_MAX_DUCKS) {
         if (!(ducks[i] = createDuck(window))) {
             destroyDucks(ducks);
             return (NULL);
@@ -35,7 +35,7 @@ t_image **initGameSceneImages(size_t imageNumber)
 
     if (!images)
         return (NULL);
-    images[BACKGROUND] = createImage(BACKGROUND_PATH, (sfVector2f){0, 0});
+    images[GAME_BACKGROUND] = createImage(GAME_BACKGROUND_PATH, (sfVector2f){0, 0});
     images[CROSSAIR] = createImage(CROSSAIR_PATH, (sfVector2f){0, 0});
     return (images);
 }
@@ -46,8 +46,8 @@ t_text **initGameSceneTexts(size_t textNumber)
 
     if (!texts)
         return (NULL);
-    texts[SCORE_LABEL] = createText("Score:", (sfVector2f){10, 10}, 50, sfWhite, FONT_PATH);
-    texts[SCORE] = createText("0", (sfVector2f){200, 10}, 50, sfWhite, FONT_PATH);
+    texts[GAME_SCORE_LABEL] = createText("Score:", (sfVector2f){10, 10}, 50, sfWhite, GAME_FONT_PATH);
+    texts[GAME_SCORE] = createText("0", (sfVector2f){200, 10}, 50, sfWhite, GAME_FONT_PATH);
     return (texts);
 }
 
@@ -65,10 +65,10 @@ t_scene *initGameScene(const sfRenderWindow *window)
     t_scene *scene = createScene();
 
     if (!scene
-        || !(scene->ducks = initGameSceneDucks(MAX_DUCKS, window))
-        || !(scene->images = initGameSceneImages(IMAGENUMBER))
-        || !(scene->texts = initGameSceneTexts(TEXTNUMBER))
-        || !(scene->sounds =  initGameSceneSounds(SOUNDNUMER))) {
+        || !(scene->ducks = initGameSceneDucks(GAME_MAX_DUCKS, window))
+        || !(scene->images = initGameSceneImages(GAME_IMAGENUMBER))
+        || !(scene->texts = initGameSceneTexts(GAME_TEXTNUMBER))
+        || !(scene->sounds =  initGameSceneSounds(GAME_SOUNDNUMER))) {
         destroyScene(scene);
         return (NULL);
     }
@@ -78,13 +78,13 @@ t_scene *initGameScene(const sfRenderWindow *window)
 void updateScore(t_scene *scene, int score)
 {
     char newContent[12];
-    int newScore = atoi((char*)scene->texts[SCORE]->content) + score;
+    int newScore = atoi((char*)scene->texts[GAME_SCORE]->content) + score;
 
     my_memset(newContent, 0, 12);
     sprintf(newContent, "%d", newScore);
 
-    free(scene->texts[SCORE]->content);
-    scene->texts[SCORE]->content = my_strdup(newContent);
+    free(scene->texts[GAME_SCORE]->content);
+    scene->texts[GAME_SCORE]->content = my_strdup(newContent);
 
-    sfText_setString(scene->texts[SCORE]->text, scene->texts[SCORE]->content);
+    sfText_setString(scene->texts[GAME_SCORE]->text, scene->texts[GAME_SCORE]->content);
 }

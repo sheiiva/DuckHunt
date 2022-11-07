@@ -22,7 +22,7 @@
     #include "text.h"
     #include "duck.h"
 
-    #define SCENENUMBER 1
+    #define SCENENUMBER 2
 
     typedef struct s_scene {
         t_duck **ducks;
@@ -32,7 +32,6 @@
     } t_scene;
 
     t_scene **initScenes(const sfRenderWindow *window);
-    t_scene *initGameScene(const sfRenderWindow *window);
     void drawScene(sfRenderWindow* window, t_scene *scene);
     void destroyScene(t_scene *scene);
     void destroyScenes(t_scene **scenes);

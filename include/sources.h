@@ -10,6 +10,8 @@
 #ifndef SOURCE_H_
     #define SOURCE_H_
 
+    #define __UNUSED__ __attribute__ ((unused))
+
     #include <stdlib.h>
     #include "event.h"
 

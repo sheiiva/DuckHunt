@@ -36,7 +36,7 @@ t_duck **updateDucksPosition(t_duck **ducks)
 {
     int i =  0;
 
-    while (i < MAX_DUCKS) {
+    while (i < GAME_MAX_DUCKS) {
         updateDuckSprite(ducks[i]);
         updateDuckPosition(ducks[i]);
         i += 1;
