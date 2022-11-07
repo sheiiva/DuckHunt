@@ -18,9 +18,10 @@
     #define STDOUT  1
     #define STDERR  2
 
+    void*   my_memset(void *s, int c, size_t n);
     ssize_t my_putchar(char c, int fd);
-    size_t my_strlen(char const *str);
-    char *my_strcpy(char *dest, const char *src);
-    char *my_strdup(const char *s);
+    char*   my_strcpy(char *dest, const char *src);
+    char*   my_strdup(const char *s);
+    size_t  my_strlen(char const *str);
 
 #endif /* !MY_H_ */

@@ -7,8 +7,10 @@
 **
 */
 
+#include "my.h"
 #include "gameScene.h"
 #include "scene.h"
+#include "sources.h"
 
 t_duck **initGameSceneDucks(size_t duckNumber, const sfRenderWindow *window)
 {
@@ -71,4 +73,18 @@ t_scene *initGameScene(const sfRenderWindow *window)
         return (NULL);
     }
     return (scene);
+}
+
+void updateScore(t_scene *scene, int score)
+{
+    char newContent[12];
+    int newScore = atoi((char*)scene->texts[SCORE]->content) + score;
+
+    my_memset(newContent, 0, 12);
+    sprintf(newContent, "%d", newScore);
+
+    free(scene->texts[SCORE]->content);
+    scene->texts[SCORE]->content = my_strdup(newContent);
+
+    sfText_setString(scene->texts[SCORE]->text, scene->texts[SCORE]->content);
 }

@@ -41,5 +41,7 @@
     sfRenderWindow *createWindow(sfVideoMode mode);
     void destroyWindow(t_window *window);
     t_window *initWindow();
+    void displayAll(sfRenderWindow* window, t_scene *scene);
+    void clearWindow(sfRenderWindow* window);
 
 #endif /* !SYSTEM_H_ */

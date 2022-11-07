@@ -12,7 +12,6 @@
 
 void destroyText(t_text *text)
 {
-    free(text->content);
     if (text->text)
         sfText_destroy(text->text);
     if (text->font)
@@ -51,11 +50,6 @@ t_text *createText(char const *content, sfVector2f position, unsigned int size,
 
     if (!text)
         return (NULL);
-    text->content = my_strdup(content);
-    if (!text->content) {
-        destroyText(text);
-        return (NULL);
-    }
     text->font = sfFont_createFromFile(fontPath);
     if (!text->font) {
         destroyText(text);
@@ -68,7 +62,8 @@ t_text *createText(char const *content, sfVector2f position, unsigned int size,
     }
     text->size = size;
     text->position = position;
-    sfText_setString(text->text, text->content);
+    text->content = my_strdup(content);
+    sfText_setString(text->text, content);
     sfText_setPosition(text->text, position);
 	sfText_setColor(text->text, color);
     sfText_setFont(text->text, text->font);

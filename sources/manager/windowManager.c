@@ -10,6 +10,11 @@
 #include "sources.h"
 #include "system.h"
 
+void clearWindow(sfRenderWindow* window)
+{
+    sfRenderWindow_clear(window, sfBlack);
+}
+
 sfRenderWindow *createWindow(sfVideoMode mode)
 {
     return sfRenderWindow_create(mode, "Duck Hunt", sfResize  | sfClose, NULL);

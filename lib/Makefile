@@ -22,7 +22,8 @@ override LDFLAGS 	+=
 override LDLIBS 	+=
 
 
-SRC			=	my/my_putchar.c		\
+SRC			=	my/my_memset.c		\
+				my/my_putchar.c		\
 				my/my_strcpy.c		\
 				my/my_strdup.c		\
 				my/my_strlen.c		\

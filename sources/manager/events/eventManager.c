@@ -11,8 +11,6 @@
 #include "gameScene.h"
 #include "event.h"
 
-#include <stdio.h>
-
 void onShootDuck(t_system *system, t_scene **scenes)
 {
     int i = 0;
@@ -25,6 +23,7 @@ void onShootDuck(t_system *system, t_scene **scenes)
         return;
     while (i < MAX_DUCKS) {
         if (click_on_sprite(scenes[GAMESCENE]->ducks[i]->image->sprite, system->window->window)) {
+            updateScore(scenes[GAMESCENE], 1);
             resetDuck(scenes[GAMESCENE]->ducks[i], system->window->window);
         }
         i += 1;

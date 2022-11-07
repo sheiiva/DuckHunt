@@ -10,6 +10,12 @@
 #include "sources.h"
 #include "system.h"
 
+void displayAll(sfRenderWindow* window, t_scene *scene)
+{
+    drawScene(window, scene);
+    sfRenderWindow_display(window);
+}
+
 void destroySystem(t_system *system)
 {
     sfClock_destroy(system->clock);
