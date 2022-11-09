@@ -10,6 +10,7 @@
 #include "new.h"
 #include "system.h"
 
+#include "window.h"
 #include "clock.h"
 
 typedef struct s_class {
@@ -18,6 +19,7 @@ typedef struct s_class {
     Class base;
 
     /* Special Defintion*/
+    Object *window;
     Object *clock;
     sfEvent event;
     int state;
@@ -28,6 +30,7 @@ static void System_ctor(SystemClass *this, va_list *args)
     (void)args;
 
     // Initialize internal resources
+    this->window = new(Window);
     this->clock = new(Clock);
     this->state = MENUSCENE;
 
@@ -37,6 +40,7 @@ static void System_ctor(SystemClass *this, va_list *args)
 static void System_dtor(SystemClass *this)
 {
     // Release internal resources
+    delete(this->window);
     delete(this->clock);
 
     printf("~System()\n");
