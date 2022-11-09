@@ -8,12 +8,12 @@
 */
 
 #include "new.h"
-#include "clock.h"
+#include "system.h"
 
 int main(void)
 {
-    Object *clock = new(Clock);
+    Object *system = new(System);
 
-    delete(clock);
+    delete(system);
     return (0);
 }
