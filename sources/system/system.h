@@ -17,8 +17,6 @@
 
     #include "object.h"
 
-    extern const Class *System;
-
     #define TIMEREFRESH 0.1
 
     enum _GAMESTATE {
@@ -27,5 +25,6 @@
         GAMESCENE=  1,
     };
 
+    extern const Class *System;
 
 #endif /* !SYSTEM_H_ */

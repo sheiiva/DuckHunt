@@ -15,6 +15,8 @@
 
     #include "object.h"
 
+    #define FRAMERATE 60
+
     extern const Class *Window;
 
 #endif /* !WINDOW_H_ */

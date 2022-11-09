@@ -29,6 +29,7 @@ static void Window_ctor(WindowClass *this, va_list *args)
     this->window = sfRenderWindow_create(this->mode, "Duck Hunt", sfResize | sfClose, NULL);
 
     sfRenderWindow_setMouseCursorVisible(this->window, sfFalse);
+    sfRenderWindow_setFramerateLimit(this->window, FRAMERATE);
 
     printf("Window()\n");
 }
