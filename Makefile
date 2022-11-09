@@ -1,30 +1,41 @@
 ##
-## 		R O O T  M A K E F I L E
+## 		S O U R C E S  M A K E F I L E
 ##
 ## Corentin COUTRET-ROZET
 ## https://github.com/sheiiva/DuckHunt
 ##
 ##
 
-NAME 		= 	root_makefile
+CC			=	gcc
+LD			=	$(CC)
+PRINT		=	@echo -e
+RM          =   @rm -f
 
-LIB_PATH	=	./lib/
-SRC_PATH	=	./sources/
+INCLUDES	=	$(shell find . -name '*.h' | grep -oP ".*/" | uniq | awk '{print "-I"$$0}')
 
-CLEAN		=	clean
-FCLEAN		=	fclean
+SOURCES		=	$(shell find . -name '*.c')
 
-all:
-	@$(MAKE) -C $(LIB_PATH)
-	@$(MAKE) -C $(SRC_PATH)
+OBJ 		= 	$(SOURCES:.c=.o)
+
+override CFLAGS 	+=	-g3 -W -Wall -Werror -Wextra $(INCLUDES)
+override LDLIBS 	+=	-lcsfml-audio -lcsfml-graphics -lcsfml-system -lcsfml-window
+
+NAME 		= 	$(ROOT_PATH)DuckHunt
+
+$(NAME): $(OBJ)
+	$(PRINT) "\n------->\tPRECOMPILED SRC DEPENDENCIES.\n\nLET'S LINK IT ALL:\n"
+	$(LD) $(CFLAGS) $^ $(LDFLAGS) $(LDLIBS) -o $@
+	$(PRINT) "\n------->\tCONGRATS !\n"
+
+all: $(NAME)
 
 clean:
-	@$(MAKE) $(CLEAN) -C $(LIB_PATH)
-	@$(MAKE) $(CLEAN) -C $(SRC_PATH)
+	$(PRINT) "\n------->\tREMOVE TMP FILES\n"
+	$(RM) $(OBJ) $(OBJ:.o=.gcno) $(OBJ:.o=.gcda)
 
-fclean:
-	@$(MAKE) $(FCLEAN) -C $(LIB_PATH)
-	@$(MAKE) $(FCLEAN) -C $(SRC_PATH)
+fclean: clean
+	$(PRINT) "------->\tREMOVE BINARY\n"
+	$(RM) $(NAME)
 
 re: fclean all
 

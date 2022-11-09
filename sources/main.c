@@ -7,10 +7,13 @@
 **
 */
 
-#include <stdio.h>
+#include "new.h"
+#include "clock.h"
 
-int main()
+int main(void)
 {
-    printf("Coucou\n");
+    Object *clock = new(Clock);
+
+    delete(clock);
     return (0);
 }
