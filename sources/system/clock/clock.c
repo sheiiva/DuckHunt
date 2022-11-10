@@ -24,6 +24,8 @@ static void Clock_ctor(ClockClass *this, va_list *args)
 
     // Initialize internal resources
     this->clock = sfClock_create();
+    if (!this->clock)
+        raise("Cannot create system's clock.");
 
     printf("Clock()\n");
 }
