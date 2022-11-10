@@ -12,11 +12,19 @@
 
     #include "object.h"
 
+    typedef struct s_MenuSceneClass {
+
+        /* Inheritance */
+        ISceneClass iScene;
+
+        /* Special Definition*/
+    } MenuSceneClass;
+
+    extern const Class *MenuScene;
+
     #define MENU_IMAGENUMBER    1
 
     #define MENU_BACKGROUND      0
     #define MENU_BACKGROUND_PATH "assets/images/gameScene/background.png"
-
-    extern const Class *MenuScene;
 
 #endif /* !MENUSCENE_H_ */

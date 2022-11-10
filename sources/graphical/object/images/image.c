@@ -13,18 +13,6 @@
 
 #include "image.h"
 
-typedef struct s_class {
-
-    /* Inheritance */
-    Class base;
-
-    /* Special Definition*/
-    char*       filePath;
-    sfTexture*  texture;
-    sfSprite*   sprite;
-    sfVector2f  position;
-} ImageClass;
-
 static void Image_ctor(ImageClass *this, va_list *args)
 {
     // Initialize internal resources

@@ -16,13 +16,22 @@
     #include "object.h"
     #include "array.h"
 
+    typedef struct s_SceneManagerClass {
+
+        /* Inheritance */
+        Class base;
+
+        /* Special Definition*/
+        Object*     scenesArray;
+    } SceneManagerClass;
+
+    extern const Class *SceneManager;
+
+    #define createscene(c, ...)    ((Container *)c)->__setitem__(c, __VA_ARGS__)
+
     #define SCENENUMBER     1
 
     #define I_MENUSCENE     0
     #define I_GAMESCENE     1
-
-    extern const Class *SceneManager;
-
-    # define createscene(c, ...)    ((Container *)c)->__setitem__(c, __VA_ARGS__)
 
 #endif /* !SCENEMANAGER_H_ */

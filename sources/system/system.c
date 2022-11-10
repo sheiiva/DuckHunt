@@ -14,18 +14,13 @@
 #include "clock.h"
 #include "sceneManager.h"
 
-typedef struct s_class {
-
-    /* Inheritance */
-    Class base;
-
-    /* Special Definition*/
-    int     state;
-    Object* window;
-    Object* clock;
-    Object* sceneManager;
-    sfEvent event;
-} SystemClass;
+static void GameLoop(SystemClass *this)
+{
+    while (isOpen(this->window)) {
+        clear(this->window);
+        display(this->window);
+    }
+}
 
 static void System_ctor(SystemClass *this, va_list *args)
 {
@@ -38,6 +33,8 @@ static void System_ctor(SystemClass *this, va_list *args)
     this->sceneManager = new(SceneManager);
 
     printf("System()\n");
+
+    GameLoop(this);
 }
 
 static void System_dtor(SystemClass *this)

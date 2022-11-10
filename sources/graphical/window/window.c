@@ -12,15 +12,20 @@
 
 #include "window.h"
 
-typedef struct s_class {
+static sfBool Window_isOpen(WindowClass *this)
+{
+    return sfRenderWindow_isOpen(this->window);
+}
 
-    /* Inheritance */
-    Class base;
+void Window_clear(WindowClass *this)
+{
+    sfRenderWindow_clear(this->window, sfBlack);
+}
 
-    /* Special Definition*/
-    sfVideoMode mode;
-    sfRenderWindow* window;
-} WindowClass;
+void Window_display(WindowClass *this)
+{
+    sfRenderWindow_display(this->window);
+}
 
 static void Window_ctor(WindowClass *this, va_list *args)
 {
@@ -63,6 +68,10 @@ static const WindowClass _description = {
         .__lt__ = NULL
     },
     .window = NULL,
+    /* Methods definitions */
+    .__clear__ =    &Window_clear,
+    .__display__ =  &Window_display,
+    .__isOpen__ =   &Window_isOpen,
 };
 
 const Class *Window = (const Class *)&_description;

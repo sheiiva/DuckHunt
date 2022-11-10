@@ -18,9 +18,9 @@
         Class base;
 
         /* Special Definition*/
-        Object *images;
-        Object *texts;
-        Object *sounds;
+        Object*     images;
+        Object*     texts;
+        Object*     sounds;
     } ISceneClass;
 
     extern const Class *IScene;

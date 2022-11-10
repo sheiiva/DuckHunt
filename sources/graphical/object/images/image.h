@@ -18,6 +18,18 @@
 
     #include "object.h"
 
+    typedef struct s_ImageClass {
+
+        /* Inheritance */
+        Class base;
+
+        /* Special Definition*/
+        char*       filePath;
+        sfTexture*  texture;
+        sfSprite*   sprite;
+        sfVector2f  position;
+    } ImageClass;
+
     extern const Class *Image;
 
 #endif /* !IMAGE_H_ */

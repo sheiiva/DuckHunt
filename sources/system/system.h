@@ -17,7 +17,20 @@
 
     #include "object.h"
 
-    #define TIMEREFRESH 0.1
+    typedef struct s_SystemClass {
+
+        /* Inheritance */
+        Class base;
+
+        /* Special Definition*/
+        int     state;
+        Object* window;
+        Object* clock;
+        Object* sceneManager;
+        sfEvent event;
+    } SystemClass;
+
+    extern const Class *System;
 
     enum _GAMESTATE {
         QUIT=       -1,
@@ -25,6 +38,6 @@
         GAMESCENE=  1,
     };
 
-    extern const Class *System;
+    #define TIMEREFRESH 0.1
 
 #endif /* !SYSTEM_H_ */

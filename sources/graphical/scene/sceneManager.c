@@ -13,17 +13,7 @@
 
 #include "sceneManager.h"
 #include "iScene.h"
-
 #include "menuScene.h"
-
-typedef struct s_class {
-
-    /* Inheritance */
-    Class base;
-
-    /* Special Definition*/
-    Object *scenesArray;
-} SceneManagerClass;
 
 static void SceneManager_ctor(SceneManagerClass *this, va_list *args)
 {

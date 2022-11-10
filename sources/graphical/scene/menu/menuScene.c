@@ -15,14 +15,6 @@
 #include "menuScene.h"
 #include "image.h"
 
-typedef struct s_class {
-
-    /* Inheritance */
-    ISceneClass iScene;
-
-    /* Special Definition*/
-} MenuSceneClass;
-
 static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
 {
     (void)this;
