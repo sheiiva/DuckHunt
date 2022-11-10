@@ -14,12 +14,17 @@
 #include "clock.h"
 #include "sceneManager.h"
 
-static void GameLoop(SystemClass *this)
+static void System_gloop(SystemClass *this)
 {
-    while (isOpen(this->window)) {
-        clear(this->window);
-        display(this->window);
+    while (isWindowOpen(this->window)) {
+        clearWindow(this->window);
+        displaySystem(this);
     }
+}
+
+static void System_display(SystemClass *this)
+{
+    displayWindow(this->window);
 }
 
 static void System_ctor(SystemClass *this, va_list *args)
@@ -34,7 +39,7 @@ static void System_ctor(SystemClass *this, va_list *args)
 
     printf("System()\n");
 
-    GameLoop(this);
+    gameLoop(this);
 }
 
 static void System_dtor(SystemClass *this)
@@ -66,6 +71,10 @@ static const SystemClass _description = {
     .window = NULL,
     .clock = NULL,
     .sceneManager = NULL,
+
+    /* Methods definitions */
+    .__display__ = &System_display,
+    .__gameLoop__ = &System_gloop,
 };
 
 const Class *System = (const Class *)&_description;

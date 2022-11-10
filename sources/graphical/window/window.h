@@ -34,9 +34,9 @@
 
     extern const Class *Window;
 
-    #define clear(c)           ((WindowClass *)c)->__clear__(c)
-    #define display(c)         ((WindowClass *)c)->__display__(c)
-    #define isOpen(c)          ((WindowClass *)c)->__isOpen__(c)
+    #define clearWindow(c)           ((WindowClass*)c)->__clear__(c)
+    #define displayWindow(c)         ((WindowClass*)c)->__display__(c)
+    #define isWindowOpen(c)          ((WindowClass*)c)->__isOpen__(c)
 
 
 #endif /* !WINDOW_H_ */

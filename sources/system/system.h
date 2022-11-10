@@ -28,9 +28,16 @@
         Object* clock;
         Object* sceneManager;
         sfEvent event;
+
+        /* Methods definitions*/
+        void    (*__gameLoop__)(struct s_SystemClass*);
+        void    (*__display__)(struct s_SystemClass*);
     } SystemClass;
 
     extern const Class *System;
+
+    #define displaySystem(c)        ((SystemClass*)c)->__display__(c)
+    #define gameLoop(c)             ((SystemClass*)c)->__gameLoop__(c)
 
     enum _GAMESTATE {
         QUIT=       -1,
