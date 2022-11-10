@@ -13,6 +13,7 @@
 
 #include "iScene.h"
 #include "menuScene.h"
+#include "image.h"
 
 typedef struct s_class {
 
@@ -33,8 +34,10 @@ static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
 
 static void MenuScene_dtor(MenuSceneClass *this)
 {
-    (void)this;
     // Release internal resources
+    this->iScene.images = new(Array, MENU_IMAGENUMBER, Image,
+        MENU_BACKGROUND_PATH, (sfVector2f){0, 0}
+    );
 
     printf("~MenuScene()\n");
 }

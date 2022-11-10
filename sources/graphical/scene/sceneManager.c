@@ -33,7 +33,6 @@ static void SceneManager_ctor(SceneManagerClass *this, va_list *args)
     this->scenesArray = new(Array, SCENENUMBER, IScene);
 
     createscene(this->scenesArray, I_MENUSCENE, MenuScene);
-    createscene(this->scenesArray, I_GAMESCENE, MenuScene);
 
     printf("SceneManager()\n");
 }
