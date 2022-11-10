@@ -1,6 +1,6 @@
 /*
 ** Description:
-** Window's class Definition
+** Window's class definition
 **
 ** Corentin COUTRET-ROZET
 ** https://github.com/sheiiva/DuckHunt
@@ -17,7 +17,7 @@ typedef struct s_class {
     /* Inheritance */
     Class base;
 
-    /* Special Defintion*/
+    /* Special Definition*/
     sfVideoMode mode;
     sfRenderWindow* window;
 } WindowClass;
@@ -30,7 +30,7 @@ static void Window_ctor(WindowClass *this, va_list *args)
     this->mode = (sfVideoMode){1280, 800, 32};
     this->window = sfRenderWindow_create(this->mode, "Duck Hunt", sfResize | sfClose, NULL);
     if (!this->window)
-        raise("Cannot create any window.");
+        raise("Cannot create window.");
 
     sfRenderWindow_setMouseCursorVisible(this->window, sfFalse);
     sfRenderWindow_setFramerateLimit(this->window, FRAMERATE);

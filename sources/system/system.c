@@ -12,17 +12,19 @@
 
 #include "window.h"
 #include "clock.h"
+#include "sceneManager.h"
 
 typedef struct s_class {
 
     /* Inheritance */
     Class base;
 
-    /* Special Defintion*/
-    Object *window;
-    Object *clock;
+    /* Special Definition*/
+    int     state;
+    Object* window;
+    Object* clock;
+    Object* sceneManager;
     sfEvent event;
-    int state;
 } SystemClass;
 
 static void System_ctor(SystemClass *this, va_list *args)
@@ -30,9 +32,10 @@ static void System_ctor(SystemClass *this, va_list *args)
     (void)args;
 
     // Initialize internal resources
+    this->state = MENUSCENE;
     this->window = new(Window);
     this->clock = new(Clock);
-    this->state = MENUSCENE;
+    this->sceneManager = new(SceneManager);
 
     printf("System()\n");
 }
@@ -42,6 +45,7 @@ static void System_dtor(SystemClass *this)
     // Release internal resources
     delete(this->window);
     delete(this->clock);
+    delete(this->sceneManager);
 
     printf("~System()\n");
 }
@@ -61,8 +65,10 @@ static const SystemClass _description = {
         .__gt__ = NULL,
         .__lt__ = NULL
     },
+    .state = 0,
+    .window = NULL,
     .clock = NULL,
-    .state = 0
+    .sceneManager = NULL,
 };
 
 const Class *System = (const Class *)&_description;

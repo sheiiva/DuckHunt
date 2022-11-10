@@ -33,6 +33,7 @@ Object *va_new(const Class *class, va_list *ap)
     if (class == NULL || class->__size__ < sizeof(*class))
         raise("invalid class");
     object = malloc(class->__size__);
+    printf("Class name: %s\n", class->__name__);
     if (object == NULL)
         raise("malloc failed");
     memcpy(object, class, class->__size__);

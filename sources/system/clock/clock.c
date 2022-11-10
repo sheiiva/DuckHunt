@@ -14,7 +14,7 @@ typedef struct s_class {
     /* Inheritance */
     Class base;
 
-    /* Special Defintion*/
+    /* Special Definition*/
     sfClock *clock;
 } ClockClass;
 
