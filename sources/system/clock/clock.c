@@ -9,15 +9,6 @@
 
 #include "clock.h"
 
-typedef struct s_class {
-
-    /* Inheritance */
-    Class base;
-
-    /* Special Definition*/
-    sfClock *clock;
-} ClockClass;
-
 static void Clock_ctor(ClockClass *this, va_list *args)
 {
     (void)args;

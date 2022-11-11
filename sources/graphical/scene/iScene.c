@@ -27,6 +27,8 @@ static const ISceneClass _description = {
     .images = NULL,
     .texts = NULL,
     .sounds = NULL,
+    /* Methods definitions */
+    .__display__ = NULL,
 };
 
 const Class *IScene = (const Class *)&_description;

@@ -12,6 +12,8 @@
 
     #include "object.h"
 
+    #include <SFML/Graphics.h>
+
     typedef struct s_ISceneClass {
 
         /* Inheritance */
@@ -21,7 +23,12 @@
         Object*     images;
         Object*     texts;
         Object*     sounds;
+
+        /* Methods definitions */
+        void    (*__display__)(struct s_ISceneClass*, sfRenderWindow*);
     } ISceneClass;
+
+    #define displayScene(s, w) ((ISceneClass*)s)->__display__(s, w)
 
     extern const Class *IScene;
 

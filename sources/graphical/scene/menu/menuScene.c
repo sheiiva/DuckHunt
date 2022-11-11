@@ -15,6 +15,14 @@
 #include "menuScene.h"
 #include "image.h"
 
+static void MenuScene_display(ISceneClass *this, sfRenderWindow* window)
+{
+    for (size_t i = 0; i < len(this->images); i++)
+        displayImage(getitem(this->images, i), window);
+
+    //display texts
+}
+
 static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
 {
     (void)args;
@@ -32,6 +40,9 @@ static void MenuScene_dtor(MenuSceneClass *this)
     (void)this;
     // Release internal resources
 
+    delete(this->iScene.images);
+    // delete(this->iScene.texts);
+    // delete(this->iScene.sounds);
     printf("~MenuScene()\n");
 }
 
@@ -54,6 +65,8 @@ static const MenuSceneClass _description = {
         .images = NULL,
         .texts = NULL,
         .sounds = NULL,
+        /* Methods definitions */
+        .__display__ = &MenuScene_display,
     }
 };
 

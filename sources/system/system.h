@@ -16,6 +16,9 @@
     #include <SFML/System.h>
 
     #include "object.h"
+    #include "window.h"
+    #include "clock.h"
+    #include "sceneManager.h"
 
     typedef struct s_SystemClass {
 
@@ -23,11 +26,11 @@
         Class base;
 
         /* Special Definition*/
-        int     state;
-        Object* window;
-        Object* clock;
-        Object* sceneManager;
-        sfEvent event;
+        int                 state;
+        WindowClass*        window;
+        ClockClass*         clock;
+        SceneManagerClass*  sceneManager;
+        sfEvent             event;
 
         /* Methods definitions*/
         void    (*__gameLoop__)(struct s_SystemClass*);

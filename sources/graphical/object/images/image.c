@@ -13,6 +13,11 @@
 
 #include "image.h"
 
+static void Image_display(ImageClass *image, sfRenderWindow *window)
+{
+    sfRenderWindow_drawSprite(window, image->sprite, NULL);
+}
+
 static void Image_ctor(ImageClass *this, va_list *args)
 {
     // Initialize internal resources
@@ -58,7 +63,9 @@ static const ImageClass _description = {
     },
     .filePath = NULL,
     .texture = NULL,
-    .sprite = NULL
+    .sprite = NULL,
+    /* Methods definitions */
+    .__display__ = &Image_display,
 };
 
 const Class *Image = (const Class *)&_description;

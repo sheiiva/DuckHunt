@@ -28,7 +28,12 @@
         sfTexture*  texture;
         sfSprite*   sprite;
         sfVector2f  position;
+
+        /* Methods definitions */
+        void (*__display__)(struct s_ImageClass*, sfRenderWindow*);
     } ImageClass;
+
+    #define displayImage(i, w) ((ImageClass*)i)->__display__(i, w)
 
     extern const Class *Image;
 

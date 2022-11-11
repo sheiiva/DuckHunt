@@ -38,5 +38,4 @@
     #define displayWindow(c)         ((WindowClass*)c)->__display__(c)
     #define isWindowOpen(c)          ((WindowClass*)c)->__isOpen__(c)
 
-
 #endif /* !WINDOW_H_ */
