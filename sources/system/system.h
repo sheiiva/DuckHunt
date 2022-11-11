@@ -17,8 +17,10 @@
 
     #include "object.h"
     #include "window.h"
+    #include "eventManager.h"
     #include "clock.h"
     #include "sceneManager.h"
+    #include "iScene.h"
 
     typedef struct s_SystemClass {
 
@@ -29,8 +31,8 @@
         int                 state;
         WindowClass*        window;
         ClockClass*         clock;
+        EventManagerClass*  eventManager;
         SceneManagerClass*  sceneManager;
-        sfEvent             event;
 
         /* Methods definitions*/
         void    (*__gameLoop__)(struct s_SystemClass*);
