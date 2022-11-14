@@ -24,6 +24,24 @@ static void Text_setColor(TextClass *this, sfColor color)
     sfText_setColor(this->text, this->color);
 }
 
+static sfBool Text_mouseOnText(TextClass *this, sfRenderWindow *window)
+{
+    sfFloatRect rect = sfText_getGlobalBounds(this->text);
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
+
+    if (mouse.x > rect.left && mouse.x < rect.left + rect.width
+        && mouse.y > rect.top && mouse.y < rect.top + rect.height)
+        return (sfTrue);
+    return (sfFalse);
+}
+
+static sfBool Text_clickOnText(TextClass *this, sfRenderWindow *window)
+{
+    if (Text_mouseOnText(this, window) && sfMouse_isButtonPressed(sfMouseLeft))
+        return (sfTrue);
+    return (sfFalse);
+}
+
 static void Text_ctor(TextClass *this, va_list *args)
 {
     // Initialize internal resources
@@ -82,6 +100,8 @@ static const TextClass _description = {
     /* Methods definitions */
     .__display__ = &Text_display,
     .__setColor__ = &Text_setColor,
+    .__mouseOnText__ = &Text_mouseOnText,
+    .__clickOnText__ = &Text_clickOnText,
 };
 
 const Class *Text = (const Class *)&_description;

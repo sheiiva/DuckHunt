@@ -15,37 +15,19 @@
 #include "menuScene.h"
 #include "text.h"
 
-static sfBool mouse_on_text(sfText *text, sfRenderWindow *window)
-{
-    sfFloatRect rect = sfText_getGlobalBounds(text);
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
-
-    if (mouse.x > rect.left && mouse.x < rect.left + rect.width
-        && mouse.y > rect.top && mouse.y < rect.top + rect.height)
-        return (sfTrue);
-    return (sfFalse);
-}
-
-static sfBool click_on_text(sfText *text, sfRenderWindow *window)
-{
-    if (mouse_on_text(text, window) && sfMouse_isButtonPressed(sfMouseLeft))
-        return (sfTrue);
-    return (sfFalse);
-}
-
 void EventOnPlayButton_run(IEventClass *this, EventManagerClass *eventManager, SystemClass* system)
 {
     (void)this;
     (void)eventManager;
     //
-    ISceneClass *currentScene = (ISceneClass*)getitem(system->sceneManager->scenesArray, MENUSCENE);
+    ISceneClass *currentScene = (ISceneClass*)getitem(system->sceneManager->scenesArray, I_MENUSCENE);
     TextClass *text =  (TextClass*)getitem(currentScene->texts, MENU_PLAYBUTTON);
 
-    if (mouse_on_text(text->text, system->window->window))
+    if (text->__mouseOnText__(text, system->window->window))
         setColor(text, RED);
     else
         setColor(text, ORANGE);
-    if (click_on_text(text->text, system->window->window))
+    if (text->__clickOnText__(text, system->window->window))
         system->state = GAMESCENE;
 }
 

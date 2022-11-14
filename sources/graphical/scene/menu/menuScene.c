@@ -40,9 +40,9 @@ static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
     );
     /* Create texts Array */
     this->iScene.texts = new(Array, MENU_TEXTNUMBER, Text,
-        "Duck\n  Hunt", 150, (sfVector2f){(windowSize.x / 2) - 350, 100}, BLUE, MENU_FONT_PATH,
-        "PLAY", 50, (sfVector2f){(windowSize.x / 2) - (2*50), windowSize.y/2 + (100)}, ORANGE, MENU_FONT_PATH,
-        "CC 2022 SHEIIVA", 20, (sfVector2f){(windowSize.x / 2) - 130, windowSize.y - 50}, WHITE, MENU_FONT_PATH
+        "Duck\n  Hunt",     150, (sfVector2f){(windowSize.x / 2) - 350, 100}, BLUE, MENU_FONT_PATH,
+        "PLAY",             50, (sfVector2f){(windowSize.x / 2) - (2*50), windowSize.y/2 + (100)}, ORANGE, MENU_FONT_PATH,
+        "CC 2022 SHEIIVA",  20, (sfVector2f){(windowSize.x / 2) - 130, windowSize.y - 50}, WHITE, MENU_FONT_PATH
     );
     /* Create sounds Array */
 
