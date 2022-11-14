@@ -21,8 +21,8 @@ static void GameScene_display(ISceneClass *this, sfRenderWindow* window)
 {
     for (size_t i = 0; i < len(this->images); i++)
         displayImage(getitem(this->images, i), window);
-    // for (size_t i = 0; i < len(this->texts); i++)
-    //     displayText(getitem(this->texts, i), window);
+    for (size_t i = 0; i < len(this->texts); i++)
+        displayText(getitem(this->texts, i), window);
 }
 
 static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
@@ -37,7 +37,13 @@ static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
         GAME_ATH_PATH, (sfVector2f){0, 50}
     );
     /* Create texts Array */
-    this->iScene.texts = new(Array, GAME_TEXTNUMBER, Text
+    this->iScene.texts = new(Array, GAME_TEXTNUMBER, Text,
+        "HIT",          30,    (sfVector2f){420, 710}, GREEN, GAME_FONT_PATH,
+        "SCORE",        25,    (sfVector2f){1025, 735}, WHITE, GAME_FONT_PATH,
+        "000000",       25,    (sfVector2f){1000, 705}, WHITE, GAME_FONT_PATH,
+        "R=",           30,    (sfVector2f){225, 647}, GREEN, GAME_FONT_PATH,
+        "1",            30,    (sfVector2f){275, 647}, GREEN, GAME_FONT_PATH,
+        "SHOT",         20,    (sfVector2f){225, 740}, BLUE, GAME_FONT_PATH
     );
     /* Create sounds Array */
 

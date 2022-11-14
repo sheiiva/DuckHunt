@@ -33,7 +33,14 @@
     #define GAME_ATH_PATH           "assets/images/gameScene/ath.png"
 
     /* TEXTS */
-    #define GAME_TEXTNUMBER     0
+    #define GAME_TEXTNUMBER     6
+
+    #define GAME_HIT_LABEL          0
+    #define GAME_SCORE_LABEL        1
+    #define GAME_SCORE              2
+    #define GAME_ROUND_LABEL        3
+    #define GAME_ROUND              4
+    #define GAME_SHOT               5
 
     #define GAME_FONT_PATH "assets/fonts/m29.ttf"
 
