@@ -25,10 +25,12 @@
     #define GAME_EVENTNUMBER    1
 
     /* IMAGES */
-    #define GAME_IMAGENUMBER    1
+    #define GAME_IMAGENUMBER    2
 
-    #define GAME_BACKGROUND     0
-    #define GAME_BACKGROUND_PATH "assets/images/gameScene/background.png"
+    #define GAME_BACKGROUND         0
+    #define GAME_BACKGROUND_PATH    "assets/images/gameScene/background.png"
+    #define GAME_ATH                1
+    #define GAME_ATH_PATH           "assets/images/gameScene/ath.png"
 
     /* TEXTS */
     #define GAME_TEXTNUMBER     0
