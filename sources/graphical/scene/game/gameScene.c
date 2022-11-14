@@ -34,14 +34,16 @@ static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
     /* Create images Array */
     this->iScene.images = new(Array, GAME_IMAGENUMBER, Image,
         GAME_BACKGROUND_PATH, (sfVector2f){0, 0},
-        GAME_ATH_PATH, (sfVector2f){0, 50}
+        GAME_ATH_PATH, (sfVector2f){0, 50},
+        GAME_AMMO_PATH, (sfVector2f){225, 705},
+        GAME_WDUCK_PATH, (sfVector2f){570, 715}
     );
     /* Create texts Array */
     this->iScene.texts = new(Array, GAME_TEXTNUMBER, Text,
-        "HIT",          30,    (sfVector2f){420, 710}, GREEN, GAME_FONT_PATH,
+        "HIT",          30,    (sfVector2f){440, 715}, GREEN, GAME_FONT_PATH,
         "SCORE",        25,    (sfVector2f){1025, 735}, WHITE, GAME_FONT_PATH,
         "000000",       25,    (sfVector2f){1000, 705}, WHITE, GAME_FONT_PATH,
-        "R=",           30,    (sfVector2f){225, 647}, GREEN, GAME_FONT_PATH,
+        "R.",           30,    (sfVector2f){225, 647}, GREEN, GAME_FONT_PATH,
         "1",            30,    (sfVector2f){275, 647}, GREEN, GAME_FONT_PATH,
         "SHOT",         20,    (sfVector2f){225, 740}, BLUE, GAME_FONT_PATH
     );

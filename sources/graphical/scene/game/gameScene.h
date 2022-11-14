@@ -25,12 +25,16 @@
     #define GAME_EVENTNUMBER    1
 
     /* IMAGES */
-    #define GAME_IMAGENUMBER    2
+    #define GAME_IMAGENUMBER    4
 
     #define GAME_BACKGROUND         0
     #define GAME_BACKGROUND_PATH    "assets/images/gameScene/background.png"
     #define GAME_ATH                1
     #define GAME_ATH_PATH           "assets/images/gameScene/ath.png"
+    #define GAME_AMMO               2
+    #define GAME_AMMO_PATH           "assets/images/gameScene/ammo.png"
+    #define GAME_WDUCK              3
+    #define GAME_WDUCK_PATH         "assets/images/gameScene/ducks.png"
 
     /* TEXTS */
     #define GAME_TEXTNUMBER     6
