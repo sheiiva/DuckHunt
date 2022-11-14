@@ -49,11 +49,9 @@ static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
     printf("MenuScene()\n");
 }
 
-static void MenuScene_dtor(MenuSceneClass *this)
+static void MenuScene_dtor(__UNUSED__ MenuSceneClass *this)
 {
-    (void)this;
     // Release internal resources
-
     delete(this->iScene.images);
     delete(this->iScene.eventManager);
     delete(this->iScene.texts);

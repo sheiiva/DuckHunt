@@ -27,10 +27,8 @@ void Window_display(WindowClass *this)
     sfRenderWindow_display(this->window);
 }
 
-static void Window_ctor(WindowClass *this, va_list *args)
+static void Window_ctor(WindowClass *this, __UNUSED__ va_list *args)
 {
-    (void)args;
-
     // Initialize internal resources
     this->mode = (sfVideoMode){1280, 800, 32};
     this->window = sfRenderWindow_create(this->mode, "Duck Hunt", sfResize | sfClose, NULL);

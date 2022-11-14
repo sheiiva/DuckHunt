@@ -13,28 +13,21 @@
 
 #include "eventOnClose.h"
 
-void EventOnClose_run(IEventClass *this, EventManagerClass *eventManager, SystemClass* system)
+void EventOnClose_run(__UNUSED__ IEventClass *this, EventManagerClass *eventManager, SystemClass* system)
 {
-    (void)this;
-
     if (eventManager->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape)) {
         sfRenderWindow_close(system->window->window);
         system->state = QUIT;
     }
 }
 
-static void EventOnClose_ctor(EventOnCloseClass *this, va_list *args)
+static void EventOnClose_ctor(__UNUSED__ EventOnCloseClass *this, __UNUSED__ va_list *args)
 {
-    (void)this;
-    (void)args;
-
     printf("~EventOnClose()\n");
 }
 
-static void EventOnClose_dtor(EventOnCloseClass *this)
+static void EventOnClose_dtor(__UNUSED__ EventOnCloseClass *this)
 {
-    (void)this;
-
     printf("~EventOnClose()\n");
 }
 

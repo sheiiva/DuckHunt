@@ -29,10 +29,8 @@ static void System_gloop(SystemClass *this)
     }
 }
 
-static void System_ctor(SystemClass *this, va_list *args)
+static void System_ctor(SystemClass *this, __UNUSED__ va_list *args)
 {
-    (void)args;
-
     // Initialize internal resources
     this->state = MENUSCENE;
     this->window = new(Window);

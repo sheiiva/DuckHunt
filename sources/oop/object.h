@@ -17,6 +17,8 @@
 
     # include "raise.h"
 
+    #define __UNUSED__ __attribute__ ((unused))
+
     typedef void Object;
     typedef void (*ctor_t)(Object *this, va_list *args);
     typedef void (*dtor_t)(Object *this);

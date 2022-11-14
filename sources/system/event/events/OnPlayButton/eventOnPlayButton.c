@@ -15,11 +15,8 @@
 #include "menuScene.h"
 #include "text.h"
 
-void EventOnPlayButton_run(IEventClass *this, EventManagerClass *eventManager, SystemClass* system)
+void EventOnPlayButton_run(__UNUSED__ IEventClass *this, __UNUSED__ EventManagerClass *eventManager, SystemClass* system)
 {
-    (void)this;
-    (void)eventManager;
-    //
     ISceneClass *currentScene = (ISceneClass*)getitem(system->sceneManager->scenesArray, I_MENUSCENE);
     TextClass *text =  (TextClass*)getitem(currentScene->texts, MENU_PLAYBUTTON);
 
@@ -31,18 +28,13 @@ void EventOnPlayButton_run(IEventClass *this, EventManagerClass *eventManager, S
         system->state = GAMESCENE;
 }
 
-static void EventOnPlayButton_ctor(EventOnPlayButtonClass *this, va_list *args)
+static void EventOnPlayButton_ctor(__UNUSED__ EventOnPlayButtonClass *this, __UNUSED__ va_list *args)
 {
-    (void)this;
-    (void)args;
-
     printf("~EventOnPlayButton()\n");
 }
 
-static void EventOnPlayButton_dtor(EventOnPlayButtonClass *this)
+static void EventOnPlayButton_dtor(__UNUSED__ EventOnPlayButtonClass *this)
 {
-    (void)this;
-
     printf("~EventOnPlayButton()\n");
 }
 

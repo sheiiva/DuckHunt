@@ -9,10 +9,8 @@
 
 #include "clock.h"
 
-static void Clock_ctor(ClockClass *this, va_list *args)
+static void Clock_ctor(ClockClass *this, __UNUSED__ va_list *args)
 {
-    (void)args;
-
     // Initialize internal resources
     this->clock = sfClock_create();
     if (!this->clock)

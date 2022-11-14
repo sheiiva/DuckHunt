@@ -27,12 +27,11 @@ static void EventManager_ctor(EventManagerClass *this, va_list *args)
     printf("EventManager()\n");
 }
 
-static void EventManager_dtor(EventManagerClass *this)
+static void EventManager_dtor(__UNUSED__ EventManagerClass *this)
 {
     // Release internal resources
-    (void)this;
-
     delete(this->eventArray);
+
     printf("~EventManager()\n");
 }
 
