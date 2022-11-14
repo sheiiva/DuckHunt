@@ -34,7 +34,7 @@ static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
     /* Create images Array */
     this->iScene.images = new(Array, GAME_IMAGENUMBER, Image,
         GAME_BACKGROUND_PATH, (sfVector2f){0, 0},
-        GAME_ATH_PATH, (sfVector2f){350, 700}
+        GAME_ATH_PATH, (sfVector2f){0, 50}
     );
     /* Create texts Array */
     this->iScene.texts = new(Array, GAME_TEXTNUMBER, Text
