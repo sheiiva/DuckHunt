@@ -21,9 +21,8 @@ static void ArrayIterator_ctor(ArrayIteratorClass *this, va_list* args)
     this->_idx = va_arg(*args, int);
 }
 
-static void ArrayIterator_dtor(ArrayIteratorClass *this)
+static void ArrayIterator_dtor(__UNUSED__ ArrayIteratorClass *this)
 {
-    (void)this;
 }
 
 static bool ArrayIterator_eq(ArrayIteratorClass *this, ArrayIteratorClass* other)

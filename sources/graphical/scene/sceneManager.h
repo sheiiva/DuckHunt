@@ -29,7 +29,7 @@
 
     #define createscene(c, ...) ((Container*)c)->__setitem__(c, __VA_ARGS__)
 
-    #define SCENENUMBER     1
+    #define SCENENUMBER     2
 
     #define I_MENUSCENE     0
     #define I_GAMESCENE     1

@@ -25,7 +25,7 @@ void EventOnPlayButton_run(__UNUSED__ IEventClass *this, __UNUSED__ EventManager
     else
         setColor(text, ORANGE);
     if (text->__clickOnText__(text, system->window->window))
-        system->state = GAMESCENE;
+        system->state = I_GAMESCENE;
 }
 
 static void EventOnPlayButton_ctor(__UNUSED__ EventOnPlayButtonClass *this, __UNUSED__ va_list *args)

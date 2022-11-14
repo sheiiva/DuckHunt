@@ -26,10 +26,8 @@ static void MenuScene_display(ISceneClass *this, sfRenderWindow* window)
         displayText(getitem(this->texts, i), window);
 }
 
-static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
+static void MenuScene_ctor(MenuSceneClass *this, __UNUSED__ va_list *args)
 {
-    sfVector2u windowSize = sfRenderWindow_getSize(va_arg(*args, sfRenderWindow *));
-
     /* Create event Array */
     this->iScene.eventManager = new(EventManager, MENU_EVENTNUMBER);
     createEvent(this->iScene.eventManager->eventArray, 0, EventOnClose);
@@ -40,16 +38,16 @@ static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
     );
     /* Create texts Array */
     this->iScene.texts = new(Array, MENU_TEXTNUMBER, Text,
-        "Duck\n  Hunt",     150, (sfVector2f){(windowSize.x / 2) - 350, 100}, BLUE, MENU_FONT_PATH,
-        "PLAY",             50, (sfVector2f){(windowSize.x / 2) - (2*50), windowSize.y/2 + (100)}, ORANGE, MENU_FONT_PATH,
-        "CC 2022 SHEIIVA",  20, (sfVector2f){(windowSize.x / 2) - 130, windowSize.y - 50}, WHITE, MENU_FONT_PATH
+        "Duck\n  Hunt",     150,    (sfVector2f){290, 100}, BLUE, MENU_FONT_PATH,
+        "PLAY",             50,     (sfVector2f){540, 500}, ORANGE, MENU_FONT_PATH,
+        "CC 2022 SHEIIVA",  20,     (sfVector2f){510, 350}, WHITE, MENU_FONT_PATH
     );
     /* Create sounds Array */
 
     printf("MenuScene()\n");
 }
 
-static void MenuScene_dtor(__UNUSED__ MenuSceneClass *this)
+static void MenuScene_dtor(MenuSceneClass *this)
 {
     // Release internal resources
     delete(this->iScene.images);

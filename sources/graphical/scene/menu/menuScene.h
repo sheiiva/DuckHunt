@@ -24,11 +24,13 @@
 
     #define MENU_EVENTNUMBER    2
 
+    /* IMAGES */
     #define MENU_IMAGENUMBER    0
 
     #define MENU_BACKGROUND     0
     #define MENU_BACKGROUND_PATH "assets/images/gameScene/background.png"
 
+    /* TEXTS */
     #define MENU_TEXTNUMBER     3
 
     #define MENU_TITLE          0
@@ -36,5 +38,8 @@
     #define MENU_CREDITS        2
 
     #define MENU_FONT_PATH "assets/fonts/m29.ttf"
+
+    /* SOUNDS */
+    #define MENU_SOUNDNUMBER     0
 
 #endif /* !MENUSCENE_H_ */

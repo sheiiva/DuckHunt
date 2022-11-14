@@ -14,6 +14,7 @@
 #include "sceneManager.h"
 #include "iScene.h"
 #include "menuScene.h"
+#include "gameScene.h"
 
 static void SceneManager_ctor(SceneManagerClass *this, va_list *args)
 {
@@ -21,6 +22,7 @@ static void SceneManager_ctor(SceneManagerClass *this, va_list *args)
     this->scenesArray = new(Array, SCENENUMBER, IScene);
 
     createscene(this->scenesArray, I_MENUSCENE, MenuScene, va_arg(*args, sfRenderWindow *));
+    createscene(this->scenesArray, I_GAMESCENE, GameScene, va_arg(*args, sfRenderWindow *));
 
     printf("SceneManager()\n");
 }
