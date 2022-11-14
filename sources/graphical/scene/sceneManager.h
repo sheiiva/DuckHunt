@@ -27,7 +27,7 @@
 
     extern const Class *SceneManager;
 
-    #define createscene(c, ...) ((Container *)c)->__setitem__(c, __VA_ARGS__)
+    #define createscene(c, ...) ((Container*)c)->__setitem__(c, __VA_ARGS__)
 
     #define SCENENUMBER     1
 

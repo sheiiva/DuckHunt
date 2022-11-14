@@ -27,12 +27,14 @@
 
         /* Special Definition*/
         sfEvent         event;
+        Object*         eventArray;
 
         /* Methods definitions */
-        void (*__getEvent__)(struct s_EventManagerClass*,  SystemClass*);
+        void (*__handleEvents__)(struct s_EventManagerClass*,  SystemClass*);
     } EventManagerClass;
 
-    #define handleEvents(e, s) ((EventManagerClass*)e)->__getEvent__(e, s)
+    #define handleEvents(e, s) ((EventManagerClass*)e)->__handleEvents__(e, s)
+    #define createEvent(c, ...) ((Container *)c)->__setitem__(c, __VA_ARGS__)
 
     extern const Class *EventManager;
 

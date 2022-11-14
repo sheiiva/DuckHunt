@@ -11,9 +11,10 @@
 #include "raise.h"
 #include "array.h"
 
-#include "iScene.h"
 #include "menuScene.h"
 #include "image.h"
+#include "eventManager.h"
+#include "eventOnClose.h"
 
 static void MenuScene_display(ISceneClass *this, sfRenderWindow* window)
 {
@@ -27,10 +28,16 @@ static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
 {
     (void)args;
 
-    // Initialize internal resources
+    /* Create event Array */
+    this->iScene.eventManager = new(EventManager, MENU_EVENTNUMBER);
+    createEvent(this->iScene.eventManager->eventArray, 0, EventOnClose);
+
+    /* Create images Array */
     this->iScene.images = new(Array, MENU_IMAGENUMBER, Image,
         MENU_BACKGROUND_PATH, (sfVector2f){0, 0}
     );
+    /* Create texts Array */
+    /* Create sounds Array */
 
     printf("MenuScene()\n");
 }
@@ -41,6 +48,7 @@ static void MenuScene_dtor(MenuSceneClass *this)
     // Release internal resources
 
     delete(this->iScene.images);
+    delete(this->iScene.eventManager);
     // delete(this->iScene.texts);
     // delete(this->iScene.sounds);
     printf("~MenuScene()\n");
@@ -65,6 +73,7 @@ static const MenuSceneClass _description = {
         .images = NULL,
         .texts = NULL,
         .sounds = NULL,
+        .eventManager = NULL,
         /* Methods definitions */
         .__display__ = &MenuScene_display,
     }

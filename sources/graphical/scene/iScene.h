@@ -14,6 +14,10 @@
 
     #include <SFML/Graphics.h>
 
+    #include "eventManager.h"
+
+    typedef struct s_EventManagerClass EventManagerClass;
+
     typedef struct s_ISceneClass {
 
         /* Inheritance */
@@ -23,6 +27,8 @@
         Object*     images;
         Object*     texts;
         Object*     sounds;
+
+        EventManagerClass* eventManager;
 
         /* Methods definitions */
         void    (*__display__)(struct s_ISceneClass*, sfRenderWindow*);

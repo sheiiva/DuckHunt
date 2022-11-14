@@ -10,18 +10,21 @@
 #include "new.h"
 #include "system.h"
 
-static void System_display(SystemClass *this)
+static void System_display(SystemClass *this, ISceneClass *currentScene)
 {
-    displayScene(getitem(this->sceneManager->scenesArray, this->state), this->window->window);
+    displayScene(currentScene, this->window->window);
     displayWindow(this->window);
 }
 
 static void System_gloop(SystemClass *this)
 {
-    while (isWindowOpen(this->window)) {
+    ISceneClass *currentScene = (ISceneClass *)getitem(this->sceneManager->scenesArray, this->state);
+
+    while (isWindowOpen(this->window) && (this->state != QUIT)) {
+        currentScene = (ISceneClass *)getitem(this->sceneManager->scenesArray, this->state);
         clearWindow(this->window);
-        displaySystem(this);
-        handleEvents(this->eventManager, this);
+        displaySystem(this, currentScene);
+        handleEvents(currentScene->eventManager, this);
         //process
     }
 }
@@ -34,7 +37,6 @@ static void System_ctor(SystemClass *this, va_list *args)
     this->state = MENUSCENE;
     this->window = new(Window);
     this->clock = new(Clock);
-    this->eventManager = new(EventManager);
     this->sceneManager = new(SceneManager);
 
     printf("System()\n");
@@ -47,7 +49,6 @@ static void System_dtor(SystemClass *this)
     // Release internal resources
     delete(this->window);
     delete(this->clock);
-    delete(this->eventManager);
     delete(this->sceneManager);
 
     printf("~System()\n");
@@ -71,7 +72,6 @@ static const SystemClass _description = {
     .state = 0,
     .window = NULL,
     .clock = NULL,
-    .eventManager = NULL,
     .sceneManager = NULL,
     /* Methods definitions */
     .__display__ = &System_display,

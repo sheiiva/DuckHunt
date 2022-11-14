@@ -15,12 +15,14 @@
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
 
-    #include "object.h"
-    #include "window.h"
-    #include "eventManager.h"
-    #include "clock.h"
     #include "sceneManager.h"
+    #include "object.h"
     #include "iScene.h"
+    #include "clock.h"
+    #include "eventManager.h"
+    #include "window.h"
+
+    typedef struct s_ISceneClass ISceneClass;
 
     typedef struct s_SystemClass {
 
@@ -31,17 +33,16 @@
         int                 state;
         WindowClass*        window;
         ClockClass*         clock;
-        EventManagerClass*  eventManager;
         SceneManagerClass*  sceneManager;
 
         /* Methods definitions*/
         void    (*__gameLoop__)(struct s_SystemClass*);
-        void    (*__display__)(struct s_SystemClass*);
+        void    (*__display__)(struct s_SystemClass*, struct s_ISceneClass*);
     } SystemClass;
 
     extern const Class *System;
 
-    #define displaySystem(c)        ((SystemClass*)c)->__display__(c)
+    #define displaySystem(c, s)     ((SystemClass*)c)->__display__(c, s)
     #define gameLoop(c)             ((SystemClass*)c)->__gameLoop__(c)
 
     enum _GAMESTATE {

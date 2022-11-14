@@ -8,32 +8,21 @@
 */
 
 #include "new.h"
-#include "system.h"
 #include "eventManager.h"
 
-// void onClose(SystemClass *system)
-// {
-//     /* Close window : exit */
-//     if (system->EventManager.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape)) {
-//         sfRenderWindow_close(system->window->window);
-//         system->state = QUIT;
-//     }
-// }
+#include "eventOnClose.h"
 
 static void EventManager_handleEvents(EventManagerClass *this, SystemClass *system)
 {
     while (sfRenderWindow_pollEvent(system->window->window, &(this->event))) {
-        if (this->event.type == sfEvtClosed || sfKeyboard_isKeyPressed(sfKeyEscape)) {
-            sfRenderWindow_close(system->window->window);
-            system->state = QUIT;
-        }
+        for (size_t i = 0; i < len(this->eventArray); i++)
+            runEvent(getitem(this->eventArray, i), this, system);
     }
 }
 
 static void EventManager_ctor(EventManagerClass *this, va_list *args)
 {
-    (void)this;
-    (void)args;
+    this->eventArray = new(Array, va_arg(*args, size_t), IEvent);
 
     printf("EventManager()\n");
 }
@@ -43,6 +32,7 @@ static void EventManager_dtor(EventManagerClass *this)
     // Release internal resources
     (void)this;
 
+    delete(this->eventArray);
     printf("~EventManager()\n");
 }
 
@@ -62,7 +52,7 @@ static const EventManagerClass _description = {
         .__lt__ = NULL
     },
     /* Methods definitions */
-    .__getEvent__ = &EventManager_handleEvents,
+    .__handleEvents__ = &EventManager_handleEvents,
 };
 
 const Class *EventManager = (const Class *)&_description;

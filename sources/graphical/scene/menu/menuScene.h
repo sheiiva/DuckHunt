@@ -10,7 +10,7 @@
 #ifndef MENUSCENE_H_
     #define MENUSCENE_H_
 
-    #include "object.h"
+    #include "iScene.h"
 
     typedef struct s_MenuSceneClass {
 
@@ -21,6 +21,8 @@
     } MenuSceneClass;
 
     extern const Class *MenuScene;
+
+    #define MENU_EVENTNUMBER    1
 
     #define MENU_IMAGENUMBER    1
 
