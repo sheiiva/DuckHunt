@@ -33,9 +33,11 @@
 
         /* Methods definitions */
         void (*__display__)(struct s_TextClass*, sfRenderWindow*);
+        void (*__setColor__)(struct s_TextClass*, sfColor);
     } TextClass;
 
-    #define displayText(t, w) ((TextClass*)t)->__display__(t, w)
+    #define displayText(t, w)   ((TextClass*)t)->__display__(t, w)
+    #define setColor(t, c)      ((TextClass*)t)->__setColor__(t, c)
 
     #define ORANGE  (sfColor){255, 140, 0, 255}
     #define YELLOW  (sfColor){255, 255, 0, 255}

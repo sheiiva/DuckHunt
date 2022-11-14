@@ -16,6 +16,7 @@
 #include "text.h"
 #include "eventManager.h"
 #include "eventOnClose.h"
+#include "eventOnPlayButton.h"
 
 static void MenuScene_display(ISceneClass *this, sfRenderWindow* window)
 {
@@ -29,11 +30,10 @@ static void MenuScene_ctor(MenuSceneClass *this, va_list *args)
 {
     sfVector2u windowSize = sfRenderWindow_getSize(va_arg(*args, sfRenderWindow *));
 
-    printf("size: x= %d | y= %d\n", windowSize.x, windowSize.y);
-
     /* Create event Array */
     this->iScene.eventManager = new(EventManager, MENU_EVENTNUMBER);
     createEvent(this->iScene.eventManager->eventArray, 0, EventOnClose);
+    createEvent(this->iScene.eventManager->eventArray, 1, EventOnPlayButton);
 
     /* Create images Array */
     this->iScene.images = new(Array, MENU_IMAGENUMBER, Image

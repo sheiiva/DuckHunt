@@ -18,6 +18,12 @@ static void Text_display(TextClass *this, sfRenderWindow *window)
     sfRenderWindow_drawText(window, this->text, NULL);
 }
 
+static void Text_setColor(TextClass *this, sfColor color)
+{
+    this->color = color;
+    sfText_setColor(this->text, this->color);
+}
+
 static void Text_ctor(TextClass *this, va_list *args)
 {
     // Initialize internal resources
@@ -75,6 +81,7 @@ static const TextClass _description = {
     .text = NULL,
     /* Methods definitions */
     .__display__ = &Text_display,
+    .__setColor__ = &Text_setColor,
 };
 
 const Class *Text = (const Class *)&_description;

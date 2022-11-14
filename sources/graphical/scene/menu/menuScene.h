@@ -22,7 +22,7 @@
 
     extern const Class *MenuScene;
 
-    #define MENU_EVENTNUMBER    1
+    #define MENU_EVENTNUMBER    2
 
     #define MENU_IMAGENUMBER    0
 
@@ -30,6 +30,10 @@
     #define MENU_BACKGROUND_PATH "assets/images/gameScene/background.png"
 
     #define MENU_TEXTNUMBER     3
+
+    #define MENU_TITLE          0
+    #define MENU_PLAYBUTTON     1
+    #define MENU_CREDITS        2
 
     #define MENU_FONT_PATH "assets/fonts/m29.ttf"
 
