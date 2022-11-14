@@ -34,13 +34,15 @@ static void MenuScene_ctor(MenuSceneClass *this, __UNUSED__ va_list *args)
     createEvent(this->iScene.eventManager->eventArray, 1, EventOnPlayButton);
 
     /* Create images Array */
-    this->iScene.images = new(Array, MENU_IMAGENUMBER, Image
+    this->iScene.images = new(Array, MENU_IMAGENUMBER, Image,
+        MENU_SEP_PATH, (sfVector2f){0, 0}
     );
     /* Create texts Array */
     this->iScene.texts = new(Array, MENU_TEXTNUMBER, Text,
-        "Duck\n  Hunt",     150,    (sfVector2f){290, 100}, BLUE, MENU_FONT_PATH,
-        "PLAY",             50,     (sfVector2f){540, 500}, ORANGE, MENU_FONT_PATH,
-        "CC 2022 SHEIIVA",  20,     (sfVector2f){510, 350}, WHITE, MENU_FONT_PATH
+        "Duck",             150,    (sfVector2f){290, 100}, BLUE, MENU_FONT_PATH,
+        "Hunt",             150,    (sfVector2f){450, 300}, BLUE, MENU_FONT_PATH,
+        "PLAY",             50,     (sfVector2f){540, 550}, ORANGE, MENU_FONT_PATH,
+        "C. 2022 SHEIIVA",  20,     (sfVector2f){500, 750}, WHITE, MENU_FONT_PATH
     );
     /* Create sounds Array */
 

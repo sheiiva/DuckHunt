@@ -25,17 +25,18 @@
     #define MENU_EVENTNUMBER    2
 
     /* IMAGES */
-    #define MENU_IMAGENUMBER    0
+    #define MENU_IMAGENUMBER    1
 
-    #define MENU_BACKGROUND     0
-    #define MENU_BACKGROUND_PATH "assets/images/gameScene/background.png"
+    #define MENU_SEP     0
+    #define MENU_SEP_PATH "assets/images/menuScene/sep.png"
 
     /* TEXTS */
-    #define MENU_TEXTNUMBER     3
+    #define MENU_TEXTNUMBER     4
 
     #define MENU_TITLE          0
-    #define MENU_PLAYBUTTON     1
-    #define MENU_CREDITS        2
+    #define MENU_TITLE2         1
+    #define MENU_PLAYBUTTON     2
+    #define MENU_CREDITS        3
 
     #define MENU_FONT_PATH "assets/fonts/m29.ttf"
 
