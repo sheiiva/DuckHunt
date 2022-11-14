@@ -46,7 +46,7 @@ static void ArrayIterator_incr(ArrayIteratorClass *this)
     this->_idx += 1;
 }
 
-static Object   *ArrayIterator_getval(ArrayIteratorClass *this)
+static Object *ArrayIterator_getval(ArrayIteratorClass *this)
 {
     if (this->_idx >= this->_array->_size)
         raise("Out of range");
@@ -94,7 +94,6 @@ static const Class  *ArrayIterator = (const Class *)&ArrayIteratorDescr;
 static void Array_ctor(ArrayClass *this, va_list* args)
 {
     unsigned int    i;
-    va_list         cp;
 
     this->_size = va_arg(*args, size_t);
     this->_type = va_arg(*args, Class*);
@@ -102,9 +101,7 @@ static void Array_ctor(ArrayClass *this, va_list* args)
     if (this->_tab == NULL)
         raise("Out of memory");
     for (i = 0; i < this->_size; i++) {
-        va_copy(cp, *args);
-        this->_tab[i] = va_new(this->_type, &cp);
-        va_end(cp);
+        this->_tab[i] = va_new(this->_type, args);
     }
 }
 
@@ -130,7 +127,7 @@ static Iterator *Array_end(ArrayClass *this)
     return (new(ArrayIterator, this, this->_size));
 }
 
-static Object   *Array_getitem(ArrayClass *this, ...)
+static Object *Array_getitem(ArrayClass *this, ...)
 {
     va_list ap;
     size_t  idx = 0;
@@ -138,7 +135,7 @@ static Object   *Array_getitem(ArrayClass *this, ...)
     va_start(ap, this);
     idx = va_arg(ap, size_t);
     if (idx >= this->_size)
-        raise("Out of range"); 
+        raise("Out of range");
     va_end(ap);
     return (this->_tab[idx]);
 }

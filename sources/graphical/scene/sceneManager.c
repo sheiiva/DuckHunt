@@ -17,12 +17,10 @@
 
 static void SceneManager_ctor(SceneManagerClass *this, va_list *args)
 {
-    (void)args;
-
     // Initialize internal resources
     this->scenesArray = new(Array, SCENENUMBER, IScene);
 
-    createscene(this->scenesArray, I_MENUSCENE, MenuScene);
+    createscene(this->scenesArray, I_MENUSCENE, MenuScene, va_arg(*args, sfRenderWindow *));
 
     printf("SceneManager()\n");
 }

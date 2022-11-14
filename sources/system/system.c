@@ -37,7 +37,7 @@ static void System_ctor(SystemClass *this, va_list *args)
     this->state = MENUSCENE;
     this->window = new(Window);
     this->clock = new(Clock);
-    this->sceneManager = new(SceneManager);
+    this->sceneManager = new(SceneManager, this->window->window);
 
     printf("System()\n");
 
