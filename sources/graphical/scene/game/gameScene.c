@@ -34,6 +34,7 @@ static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
     /* Create images Array */
     this->iScene.images = new(Array, GAME_IMAGENUMBER, Image,
         GAME_BACKGROUND_PATH, (sfVector2f){0, 0},
+        GAME_TILES_PATH, (sfVector2f){0, 0},
         GAME_ATH_PATH, (sfVector2f){0, 50},
         GAME_AMMO_PATH, (sfVector2f){225, 705},
         GAME_WDUCK_PATH, (sfVector2f){570, 715}
