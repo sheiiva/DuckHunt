@@ -17,6 +17,7 @@
     #include "eventManager.h"
 
     typedef struct s_EventManagerClass EventManagerClass;
+    typedef struct s_SystemClass SystemClass;
 
     typedef struct s_ISceneClass {
 
@@ -32,9 +33,11 @@
 
         /* Methods definitions */
         void    (*__display__)(struct s_ISceneClass*, sfRenderWindow*);
+        void    (*__process__)(struct s_ISceneClass*, SystemClass*);
     } ISceneClass;
 
-    #define displayScene(s, w) ((ISceneClass*)s)->__display__(s, w)
+    #define displayScene(s, w)      ((ISceneClass*)s)->__display__(s, w)
+    #define processScene(s, sys)    ((ISceneClass*)s)->__process__(s, sys)
 
     extern const Class *IScene;
 

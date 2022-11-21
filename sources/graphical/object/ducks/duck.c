@@ -17,6 +17,11 @@
 
 static void Duck_updatePos(DuckClass *this)
 {
+    // UPDATE DUCK SPRITE MOVEMENT
+    (this->image->offset < (2 * DUCK_IMSIZE)) ? (this->image->offset += DUCK_IMSIZE) : (this->image->offset = 0);
+    setImageRect(this->image, ((sfIntRect){this->image->offset, 0, DUCK_IMSIZE, DUCK_IMSIZE}));
+
+    // UPDATE POSITION
     sfVector2f newPos = getImagePosition(this->image);
 
     newPos.x += this->direction.x * this->speed;
@@ -37,17 +42,21 @@ static void Duck_ctor(DuckClass *this, va_list *args)
    /* Intializes random number generator */
     srand((unsigned) time(&t));
     this->direction = (sfVector2f){rand()*2 - RAND_MAX, rand()};
-    this->speed = rand() % 10;
+    this->speed = MINSPEED + (rand() % MAXSPEED);
 
     // Normalize direction vector
     int u = sqrt(pow(this->direction.x, 2) + pow(this->direction.y, 2));
-    this->direction.x = this->direction.x / u;
-    this->direction.y = this->direction.y / u;
+    this->direction.x = (u == 0) ? 1 : this->direction.x / u;
+    this->direction.y = (u == 0) ? 1 : this->direction.y / u;
+
+    printf("Direction: {%f, %f}\n", this->direction.x, this->direction.y);
+    printf("Speed: %d\n", this->speed);
 
     // Set Image
     this->image = va_arg(*args, ImageClass*);
     // Set orientation
     this->image->__setRotation__(this->image, radToDeg(atan(this->direction.y / this->direction.x)));
+    printf("angle: %f°\n", radToDeg(atan(this->direction.y / this->direction.x)));
 
     printf("Duck()\n");
 }

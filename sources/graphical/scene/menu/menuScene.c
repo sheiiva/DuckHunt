@@ -26,6 +26,8 @@ static void MenuScene_display(ISceneClass *this, sfRenderWindow* window)
         displayText(getitem(this->texts, i), window);
 }
 
+static void MenuScene_process(__UNUSED__ ISceneClass *this, __UNUSED__ SystemClass *system){}
+
 static void MenuScene_ctor(MenuSceneClass *this, __UNUSED__ va_list *args)
 {
     /* Create event Array */
@@ -35,7 +37,7 @@ static void MenuScene_ctor(MenuSceneClass *this, __UNUSED__ va_list *args)
 
     /* Create images Array */
     this->iScene.images = new(Array, MENU_IMAGENUMBER, Image,
-        MENU_SEP_PATH, (sfVector2f){0, 0}
+        MENU_SEP_PATH, (sfVector2f){0, 0}, 0, NULL
     );
     /* Create texts Array */
     this->iScene.texts = new(Array, MENU_TEXTNUMBER, Text,
@@ -81,6 +83,7 @@ static const MenuSceneClass _description = {
         .eventManager = NULL,
         /* Methods definitions */
         .__display__ = &MenuScene_display,
+        .__process__ = &MenuScene_process
     }
 };
 

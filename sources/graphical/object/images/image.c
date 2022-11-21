@@ -28,6 +28,11 @@ static void Image_setRotation(ImageClass *this, float angle)
     sfSprite_setRotation(this->sprite, angle);
 }
 
+static void Image_setRect(ImageClass *this, sfIntRect rect)
+{
+    sfSprite_setTextureRect(this->sprite, rect);
+}
+
 static void Image_display(ImageClass *image, sfRenderWindow *window)
 {
     sfRenderWindow_drawSprite(window, image->sprite, NULL);
@@ -43,8 +48,13 @@ static void Image_ctor(ImageClass *this, va_list *args)
     if (!(this->sprite = sfSprite_create()))
         raise("Can't create Sprite");
     this->position = va_arg(*args, sfVector2f);
+    this->offset = va_arg(*args, int);
     sfSprite_setPosition(this->sprite, this->position);
     sfSprite_setTexture(this->sprite, this->texture, sfTrue);
+
+    sfIntRect *rect = va_arg(*args, sfIntRect*);
+    if (rect)
+        sfSprite_setTextureRect(this->sprite, *rect);
 
     printf("Image()\n");
 }
@@ -83,7 +93,8 @@ static const ImageClass _description = {
     .__display__ = &Image_display,
     .__setRotation__ = &Image_setRotation,
     .__setPosition__ = &Image_setPosition,
-    .__getPosition__ = &Image_getPosition
+    .__getPosition__ = &Image_getPosition,
+    .__setRect__ = &Image_setRect
 };
 
 const Class *Image = (const Class *)&_description;

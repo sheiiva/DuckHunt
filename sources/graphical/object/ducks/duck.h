@@ -28,11 +28,15 @@
         void (*__move__)(struct s_DuckClass*);
     } DuckClass;
 
-    #define displayDuck(d, w) ((DuckClass*)d)->__display__(i, w)
-    #define moveDuck(d) ((DuckClass*)d)->__move__(d)
+    #define displayDuck(d, w)   ((DuckClass*)d)->__display__(i, w)
+    #define moveDuck(d)         ((DuckClass*)d)->__move__(d)
 
     extern const Class *Duck;
 
-    #define DUCK_PATH   "assets/images/gameScene/duck.png"
+    #define DUCK_PATH       "assets/images/gameScene/duck.png"
+    #define DUCK_IMSIZE     110
+
+    #define MINSPEED    4
+    #define MAXSPEED    20
 
 #endif /* !DUCK_H_ */

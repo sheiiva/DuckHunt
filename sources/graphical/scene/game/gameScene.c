@@ -25,6 +25,16 @@ static void GameScene_display(ISceneClass *this, sfRenderWindow* window)
         displayText(getitem(this->texts, i), window);
 }
 
+static void GameScene_process(ISceneClass *this, SystemClass *system)
+{
+    sfTime time = sfClock_getElapsedTime(system->clock->clock);
+
+    if ((time.microseconds / 1000000.0) > TIMEREFRESH) {
+        moveDuck(((GameSceneClass*)this)->duck);
+        sfClock_restart(system->clock->clock);
+    }
+}
+
 static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
 {
 
@@ -34,12 +44,12 @@ static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
 
     /* Create images Array */
     this->iScene.images = new(Array, GAME_IMAGENUMBER, Image,
-        GAME_BACKGROUND_PATH, (sfVector2f){0, 0},
-        GAME_DUCK_PATH, (sfVector2f){0, 600},
-        GAME_TILES_PATH, (sfVector2f){0, 0},
-        GAME_ATH_PATH, (sfVector2f){0, 50},
-        GAME_AMMO_PATH, (sfVector2f){225, 705},
-        GAME_WDUCK_PATH, (sfVector2f){570, 715}
+        GAME_BACKGROUND_PATH, (sfVector2f){0, 0}, 0, NULL,
+        GAME_DUCK_PATH, (sfVector2f){0, 400}, 0, &(sfIntRect){0, 0, DUCK_IMSIZE, DUCK_IMSIZE},
+        GAME_TILES_PATH, (sfVector2f){0, 0}, 0, NULL,
+        GAME_ATH_PATH, (sfVector2f){0, 50}, 0, NULL,
+        GAME_AMMO_PATH, (sfVector2f){225, 705}, 0, NULL,
+        GAME_WDUCK_PATH, (sfVector2f){570, 715}, 0, NULL
     );
     /* Duck */
     this->duck = new(Duck, ((Container *)this->iScene.images)->__getitem__(this->iScene.images, GAME_DUCK));
@@ -90,6 +100,7 @@ static const GameSceneClass _description = {
         .eventManager = NULL,
         /* Methods definitions */
         .__display__ = &GameScene_display,
+        .__process__ = &GameScene_process,
     },
     .duck = NULL
 };

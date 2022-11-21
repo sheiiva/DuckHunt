@@ -30,6 +30,7 @@ static const ISceneClass _description = {
     .eventManager = NULL,
     /* Methods definitions */
     .__display__ = NULL,
+    .__process__ = NULL,
 };
 
 const Class *IScene = (const Class *)&_description;

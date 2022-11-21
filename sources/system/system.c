@@ -22,10 +22,10 @@ static void System_gloop(SystemClass *this)
 
     while (isWindowOpen(this->window) && (this->state != QUIT)) {
         currentScene = (ISceneClass *)getitem(this->sceneManager->scenesArray, this->state);
+        handleEvents(currentScene->eventManager, this);
+        processScene(currentScene, this);
         clearWindow(this->window);
         displaySystem(this, currentScene);
-        handleEvents(currentScene->eventManager, this);
-        //process
     }
 }
 
