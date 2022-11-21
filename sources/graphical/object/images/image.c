@@ -20,9 +20,7 @@ static sfVector2f Image_getPosition(ImageClass *this)
 
 static void Image_setScale(ImageClass *this, sfVector2f scale)
 {
-    printf("ababa\n");
     sfSprite_setScale(this->sprite, scale);
-    printf("abacccc\n");
 }
 
 static void Image_setPosition(ImageClass *this, sfVector2f position)

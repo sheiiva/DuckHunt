@@ -55,8 +55,14 @@ static void Duck_ctor(DuckClass *this, va_list *args)
     this->direction.y = (u == 0) ? -1 : this->direction.y / u;
 
     // Set orientation
-    setImageRotation(this->image, radToDeg(atan(this->direction.y / this->direction.x)));
-    if (this->direction.x < 0)
+    float angle = radToDeg(atan(this->direction.y / this->direction.x));
+
+    if (angle < 0)
+        angle = (angle > -MINANGLE ) ? -MINANGLE : (angle < -MAXANGLE) ? -MAXANGLE : angle;
+    else
+        angle = (angle < MINANGLE ) ? MINANGLE : (angle > MAXANGLE) ? MAXANGLE : angle;
+    setImageRotation(this->image, angle);
+    if (this->direction.x < 0.)
         setImageScale(this->image, ((sfVector2f){-1, 1}));
 
     printf("Duck()\n");

@@ -39,4 +39,7 @@
     #define MINSPEED    15
     #define MAXSPEED    20
 
+    #define MINANGLE    30
+    #define MAXANGLE    70
+
 #endif /* !DUCK_H_ */
