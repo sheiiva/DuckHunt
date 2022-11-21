@@ -33,13 +33,15 @@
 
         /* Methods definitions */
         void (*__display__)(struct s_ImageClass*, sfRenderWindow*);
+        void (*__setScale__)(struct s_ImageClass*, sfVector2f);
         void (*__setRotation__)(struct s_ImageClass*, float);
         void (*__setPosition__)(struct s_ImageClass*, sfVector2f);
-        void (*__setRect__)(struct s_ImageClass*, sfIntRect);
         sfVector2f (*__getPosition__)(struct s_ImageClass*);
+        void (*__setRect__)(struct s_ImageClass*, sfIntRect);
     } ImageClass;
 
     #define displayImage(i, w)          ((ImageClass*)i)->__display__(i, w)
+    #define setImageScale(i, s)         ((ImageClass*)i)->__setScale__(i, s)
     #define setImagePosition(i, p)      ((ImageClass*)i)->__setPosition__(i, p)
     #define getImagePosition(i)         ((ImageClass*)i)->__getPosition__(i)
     #define setImageRotation(i, a)      ((ImageClass*)i)->__setRotation__(i, a)
@@ -47,6 +49,8 @@
 
     #define degToRad(angleInDegrees) ((angleInDegrees) * M_PI / 180.0)
     #define radToDeg(angleInRadians) ((angleInRadians) * 180.0 / M_PI)
+
+    #define dabs(a) ((a < 0) ? -a : a)
 
     extern const Class *Image;
 

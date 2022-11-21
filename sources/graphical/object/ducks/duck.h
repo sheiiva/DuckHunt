@@ -36,7 +36,7 @@
     #define DUCK_PATH       "assets/images/gameScene/duck.png"
     #define DUCK_IMSIZE     110
 
-    #define MINSPEED    4
+    #define MINSPEED    15
     #define MAXSPEED    20
 
 #endif /* !DUCK_H_ */

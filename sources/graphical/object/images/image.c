@@ -18,6 +18,13 @@ static sfVector2f Image_getPosition(ImageClass *this)
     return sfSprite_getPosition(this->sprite);
 }
 
+static void Image_setScale(ImageClass *this, sfVector2f scale)
+{
+    printf("ababa\n");
+    sfSprite_setScale(this->sprite, scale);
+    printf("abacccc\n");
+}
+
 static void Image_setPosition(ImageClass *this, sfVector2f position)
 {
     sfSprite_setPosition(this->sprite, position);
@@ -91,6 +98,7 @@ static const ImageClass _description = {
     .sprite = NULL,
     /* Methods definitions */
     .__display__ = &Image_display,
+    .__setScale__ = &Image_setScale,
     .__setRotation__ = &Image_setRotation,
     .__setPosition__ = &Image_setPosition,
     .__getPosition__ = &Image_getPosition,
