@@ -13,6 +13,21 @@
 
 #include "image.h"
 
+static sfVector2f Image_getPosition(ImageClass *this)
+{
+    return sfSprite_getPosition(this->sprite);
+}
+
+static void Image_setPosition(ImageClass *this, sfVector2f position)
+{
+    sfSprite_setPosition(this->sprite, position);
+}
+
+static void Image_setRotation(ImageClass *this, float angle)
+{
+    sfSprite_setRotation(this->sprite, angle);
+}
+
 static void Image_display(ImageClass *image, sfRenderWindow *window)
 {
     sfRenderWindow_drawSprite(window, image->sprite, NULL);
@@ -66,6 +81,9 @@ static const ImageClass _description = {
     .sprite = NULL,
     /* Methods definitions */
     .__display__ = &Image_display,
+    .__setRotation__ = &Image_setRotation,
+    .__setPosition__ = &Image_setPosition,
+    .__getPosition__ = &Image_getPosition
 };
 
 const Class *Image = (const Class *)&_description;

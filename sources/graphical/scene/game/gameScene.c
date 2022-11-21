@@ -27,6 +27,7 @@ static void GameScene_display(ISceneClass *this, sfRenderWindow* window)
 
 static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
 {
+
     /* Create event Array */
     this->iScene.eventManager = new(EventManager, GAME_EVENTNUMBER);
     createEvent(this->iScene.eventManager->eventArray, 0, EventOnClose);
@@ -34,11 +35,15 @@ static void GameScene_ctor(GameSceneClass *this, __UNUSED__ va_list *args)
     /* Create images Array */
     this->iScene.images = new(Array, GAME_IMAGENUMBER, Image,
         GAME_BACKGROUND_PATH, (sfVector2f){0, 0},
+        GAME_DUCK_PATH, (sfVector2f){0, 600},
         GAME_TILES_PATH, (sfVector2f){0, 0},
         GAME_ATH_PATH, (sfVector2f){0, 50},
         GAME_AMMO_PATH, (sfVector2f){225, 705},
         GAME_WDUCK_PATH, (sfVector2f){570, 715}
     );
+    /* Duck */
+    this->duck = new(Duck, ((Container *)this->iScene.images)->__getitem__(this->iScene.images, GAME_DUCK));
+
     /* Create texts Array */
     this->iScene.texts = new(Array, GAME_TEXTNUMBER, Text,
         "HIT",          30,    (sfVector2f){440, 715}, GREEN, GAME_FONT_PATH,
@@ -58,7 +63,7 @@ static void GameScene_dtor(GameSceneClass *this)
     // Release internal resources
     delete(this->iScene.images);
     delete(this->iScene.eventManager);
-    // delete(this->iScene.texts);
+    delete(this->iScene.texts);
     // delete(this->iScene.sounds);
     printf("~GameScene()\n");
 }
@@ -85,7 +90,8 @@ static const GameSceneClass _description = {
         .eventManager = NULL,
         /* Methods definitions */
         .__display__ = &GameScene_display,
-    }
+    },
+    .duck = NULL
 };
 
 const Class *GameScene = (const Class *)&_description;

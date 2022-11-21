@@ -15,6 +15,7 @@
     #include <SFML/System.h>
 
     #include <string.h>
+    #include <math.h>
 
     #include "object.h"
 
@@ -31,9 +32,18 @@
 
         /* Methods definitions */
         void (*__display__)(struct s_ImageClass*, sfRenderWindow*);
+        void (*__setRotation__)(struct s_ImageClass*, float);
+        void (*__setPosition__)(struct s_ImageClass*, sfVector2f);
+        sfVector2f (*__getPosition__)(struct s_ImageClass*);
     } ImageClass;
 
     #define displayImage(i, w) ((ImageClass*)i)->__display__(i, w)
+    #define setImageRotation(i, a) ((ImageClass*)i)->__setRotation__(i, a)
+    #define setImagePosition(i, p) ((ImageClass*)i)->__setPosition__(i, p)
+    #define getImagePosition(i) ((ImageClass*)i)->__getPosition__(i)
+
+    #define degToRad(angleInDegrees) ((angleInDegrees) * M_PI / 180.0)
+    #define radToDeg(angleInRadians) ((angleInRadians) * 180.0 / M_PI)
 
     extern const Class *Image;
 

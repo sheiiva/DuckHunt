@@ -12,12 +12,15 @@
 
     #include "iScene.h"
 
+    #include "duck.h"
+
     typedef struct s_GameSceneClass {
 
         /* Inheritance */
         ISceneClass iScene;
 
         /* Special Definition*/
+        DuckClass *duck;
     } GameSceneClass;
 
     extern const Class *GameScene;
@@ -25,17 +28,19 @@
     #define GAME_EVENTNUMBER    1
 
     /* IMAGES */
-    #define GAME_IMAGENUMBER    5
+    #define GAME_IMAGENUMBER    6
 
     #define GAME_BACKGROUND         0
     #define GAME_BACKGROUND_PATH    "assets/images/gameScene/background.png"
-    #define GAME_TILES              1
+    #define GAME_DUCK               1
+    #define GAME_DUCK_PATH          "assets/images/gameScene/duck.png"
+    #define GAME_TILES              2
     #define GAME_TILES_PATH         "assets/images/gameScene/tiles.png"
-    #define GAME_ATH                2
+    #define GAME_ATH                3
     #define GAME_ATH_PATH           "assets/images/gameScene/ath.png"
-    #define GAME_AMMO               3
+    #define GAME_AMMO               4
     #define GAME_AMMO_PATH           "assets/images/gameScene/ammo.png"
-    #define GAME_WDUCK              4
+    #define GAME_WDUCK              5
     #define GAME_WDUCK_PATH         "assets/images/gameScene/ducks.png"
 
     /* TEXTS */
